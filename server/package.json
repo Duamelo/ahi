@@ -1,63 +1,39 @@
 {
   "name": "ahi-api",
   "version": "1.0.0",
-  "description": "marketplace api",
-  "main": "dist/index.ts",
-  "types": "dist/index.d.ts",
+  "description": "api marketplace",
+  "main": "server.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "mocha -r ts-node/register ./src/**/*.spec.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Duamelo/ahi/tree/main/server"
+    "dev": "ts-node ./src/infrastructure/server.ts",
+    "test": "mocha",
+    "start": "nodemon ./src/infrastructure/server.ts"
   },
   "keywords": [
     "node",
-    "graphql",
     "mocha",
     "tdd",
-    "clean_code",
-    "typescript"
+    "express",
+    "graphql",
+    "typeorm"
   ],
-  "author": "emack.io",
+  "author": "emack-this.corp",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Duamelo/ahi/issues"
+  "dependencies": {
+    "apollo-server": "^3.6.7",
+    "body-parser": "^1.20.0",
+    "envalid": "^7.3.1",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.4.0",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.7.0",
+    "typeorm": "^0.3.6",
+    "typescript": "^4.6.3"
   },
-  "homepage": "https://github.com/Duamelo/ahi/tree/main/server",
-  "dependencies": {},
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/chai-as-promised": "^7.1.0",
-    "@types/mocha": "^5.2.2",
-    "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "source-map-support": "^0.5.6",
-    "ts-node": "^6.1.1",
-    "typescript": "^2.9.2"
-  },
-  "nyc": {
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "include": [
-      "./src/**/*.ts"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "coverage/**/*",
-      "dist/**/*",
-      "node_modules/**/*",
-      "test/**/*"
-    ],
-    "reporter": [
-      "html",
-      "text"
-    ],
-    "all": true
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "nodemon": "^2.0.16"
   }
 }
