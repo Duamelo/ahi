@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { mount } from "@vue/test-utils";
+import { mount } from "@cypress/vue";
 import Menu from "../Dashboard/MenuView.vue";
 
 describe("PathItemView", () => {

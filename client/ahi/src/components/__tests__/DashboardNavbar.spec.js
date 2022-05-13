@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { mount } from "@vue/test-utils";
+import { mount } from "@cypress/vue";
 // eslint-disable-next-line no-unused-vars
 import Navbar from "../Dashboard/NavbarView.vue";
 // import Profile from "../Dashboard/NavbarProfileView.vue";

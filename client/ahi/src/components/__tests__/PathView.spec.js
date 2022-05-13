@@ -1,6 +1,6 @@
 import { describe, it } from "vitest";
 
-import { mount } from "@vue/test-utils";
+import { mount } from "@cypress/vue";
 // import PathItemView from "../PathItemView.vue";
 import PathView from "../Path/PathView.vue";
 
