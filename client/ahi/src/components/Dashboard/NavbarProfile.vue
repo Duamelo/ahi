@@ -9,7 +9,7 @@
         {{ role }}
       </span>
     </div>
-    <img :src="profile" class="w-8 h-8 me-1" />
+    <img :src="profile" class="profile me-1" />
   </a>
 </template>
 
@@ -19,4 +19,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.profile {
+  border-radius: 2px;
+  width: 2rem /* 32px */;
+  height: 2rem /* 32px */;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white m-3 navbar-view rounded-2 shadow-sm icons">
+  <nav class="bg-white mb-4 navbar-view shadow-sm icons">
     <div class="ms-1">
       <ul class="list-reset flex">
         <li>
@@ -84,6 +84,7 @@ export default {
   align-items: center;
   margin-right: auto !important;
   margin-left: auto !important;
+  border-radius: 10px;
 }
 .navbar-view li {
   display: inline-block;
@@ -102,12 +103,18 @@ export default {
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .navbar-view li:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+}
+.navbar-view svg {
+  --tw-text-opacity: 1;
+  color: rgba(30, 64, 175, var(--tw-text-opacity));
+  width: 25px;
+  height: 25px;
 }
 </style>

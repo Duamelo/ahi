@@ -1,10 +1,10 @@
 <template>
-  <aside class="bg-white rounded" aria-label="Sidebar">
-    <div class="fw-bolder text-center mb-16">
+  <aside class="sidebar bg-white rounded me-3" aria-label="Sidebar">
+    <div class="fw-bolder text-center mb-16 mt-3">
       AHI <br />
       MARKETPLACE <br />
     </div>
-    <div class="fw-bolder text-center">PAGES & APPS <br /></div>
+    <div class="fw-bolder text-center mb-3">PAGES & APPS <br /></div>
     <ul class="icons space-y-2 p-2">
       <item href="/Email">
         <template #icon> <MailIcon /> </template>
@@ -63,16 +63,16 @@ export default {
 };
 </script>
 
-<style>
-aside {
-  width: 10%;
-  margin: 1rem !important;
+<style >
+.sidebar {
+  /* width: 12%; */
+  /* margin: 1rem !important; */
   margin-left: 1.5rem !important;
 }
-.icons svg {
+.sidebar svg {
   --tw-text-opacity: 1;
   color: rgba(30, 64, 175, var(--tw-text-opacity));
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 25px;
+  height: 25px;
 }
 </style>

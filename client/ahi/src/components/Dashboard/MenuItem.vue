@@ -1,7 +1,7 @@
 <template>
   <li>
     <a :href="href" class="menu-item hover:bg-gray-200 hover:text-black">
-      <slot name="icon" class="mr-1.5" />
+      <div class="mr-1.5"><slot name="icon" /></div>
       <slot></slot>
     </a>
   </li>
