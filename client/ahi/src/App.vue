@@ -1,11 +1,7 @@
 <script setup></script>
 
 <template>
-  <header>
-    <div class="app">
-      <h5>Ahi vue</h5>
-    </div>
-  </header>
+  <router-view></router-view>
 </template>
 
 <style>
