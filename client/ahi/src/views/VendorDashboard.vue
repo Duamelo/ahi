@@ -1,3 +1,4 @@
+
 <script setup>
 import MenuView from "../components/Dashboard/MenuView.vue";
 import Navbar from "../components/Dashboard/NavbarView.vue";
@@ -37,8 +38,7 @@ import Gains from "../components/Dashboard/GainsView.vue";
           </template>
         </dashboard-card>
       </div>
-    </div>
-  </div>
+    </div
 </template>
 
 <style>
