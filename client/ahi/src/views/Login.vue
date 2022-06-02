@@ -137,7 +137,6 @@ export default {
   }
 }
 </script>
-
 <style>
 @media (min-width: 1024px) {
   .login {
@@ -146,8 +145,8 @@ export default {
     align-items: center;
   }
 }
-
 .ahi-green {
   color: #29b9ad;
 }
+
 </style>

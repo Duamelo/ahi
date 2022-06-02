@@ -1,0 +1,113 @@
+<template>
+  <nav class="bg-white m-3 navbar-view rounded-2 shadow-sm icons">
+    <div class="ms-1">
+      <ul class="list-reset flex">
+        <li>
+          <a href="/Email"><MailIcon /></a>
+        </li>
+        <li>
+          <a href="/Chat"><ChatAltIcon /></a>
+        </li>
+        <li>
+          <a href="/Calendrier"><CalendarIcon /></a>
+        </li>
+        <li>
+          <a href="/Tasks"><ClipboardListIcon /></a>
+        </li>
+      </ul>
+    </div>
+    <ul class="flex items-center list-reset">
+      <li>
+        <a href="/E-COM"><TranslateIcon /></a>
+      </li>
+      <li>
+        <a href="/E-COM"><MoonIcon /></a>
+      </li>
+      <li>
+        <a href="/E-COM"><SearchIcon /></a>
+      </li>
+      <li>
+        <a href="/E-COM"><ShoppingCartIcon /></a>
+      </li>
+      <li>
+        <a href="/User"><BellIcon /></a>
+      </li>
+      <li class="me-1 my-1">
+        <profile-view
+          href="/profile"
+          :nom="nom"
+          :role="role"
+          :profile="profile"
+        />
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script>
+import ProfileView from "./NavbarProfile.vue";
+
+import {
+  MailIcon,
+  ChatAltIcon,
+  CalendarIcon,
+  ClipboardListIcon,
+  ShoppingCartIcon,
+  BellIcon,
+  SearchIcon,
+  MoonIcon,
+  TranslateIcon,
+} from "@heroicons/vue/outline";
+
+export default {
+  props: ["nom", "role", "profile"],
+  components: {
+    ProfileView,
+    MailIcon,
+    ChatAltIcon,
+    CalendarIcon,
+    ClipboardListIcon,
+    ShoppingCartIcon,
+    BellIcon,
+    SearchIcon,
+    MoonIcon,
+    TranslateIcon,
+  },
+};
+</script>
+
+<style>
+.navbar-view {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.navbar-view li {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.navbar-view li:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+}
+</style>

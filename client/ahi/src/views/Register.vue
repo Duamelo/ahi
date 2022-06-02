@@ -106,7 +106,6 @@ export default {
   },
 };
 </script>
-
 <style>
 @media (min-width: 1024px) {
   .register {
@@ -119,4 +118,5 @@ export default {
 .ahi-green {
   color: #29b9ad;
 }
+
 </style>
