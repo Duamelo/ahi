@@ -38,7 +38,8 @@ import Gains from "../components/Dashboard/GainsView.vue";
           </template>
         </dashboard-card>
       </div>
-    </div
+    </div>
+  </div>
 </template>
 
 <style>
