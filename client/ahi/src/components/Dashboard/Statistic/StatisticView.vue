@@ -1,8 +1,8 @@
 <template>
   <Card class="statistic-card">
     <template #title> Statistics </template>
-    <div class="row row-cols-2 justify-center icons">
-      <Item name="Clients" :count="clients">
+    <div class="row row-cols-2 justify-around icons">
+      <Item name="Clients" class="me-4" :count="clients">
         <template #icon>
           <MailIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
         </template>
@@ -12,7 +12,7 @@
           <ChatAltIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
         </template>
       </Item>
-      <Item name="Produits" :count="produits">
+      <Item name="Produits" class="me-4" :count="produits">
         <template #icon>
           <CalendarIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
         </template>

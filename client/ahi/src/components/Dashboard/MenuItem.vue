@@ -16,9 +16,16 @@ export default {
 <style>
 .menu-item {
   font-weight: 700;
-  padding: 0.5rem;
+  margin-bottom: 2rem;
+
+  /* padding: 0.5rem; */
   align-items: center;
   display: flex;
   border-radius: 0.5rem;
+}
+.menu-item svg {
+  --tw-text-opacity: 1;
+  color: rgba(30, 64, 175, var(--tw-text-opacity));
+  height: 31px;
 }
 </style>

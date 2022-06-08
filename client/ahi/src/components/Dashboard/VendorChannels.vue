@@ -1,12 +1,12 @@
 <template>
   <dashboard-card class="mb-3">
-    <template #title>
-      <div class="my-1.5">Channels</div>
-    </template>
+    <template #title> Channels </template>
     <template #left>
-      <QuestionMarkCircleIcon class="btn" style="width: 50px" />
+      <a class="text-black" href="#none"
+        ><QuestionMarkCircleIcon class="w-5 h-5"
+      /></a>
     </template>
-    <div class="row justify-around row mb-1">
+    <div class="row justify-around row mb-3">
       <div class="col-5">
         <canvas
           width="200"
@@ -15,15 +15,15 @@
           role="img"
         ></canvas>
       </div>
-      <div class="col-5">
-        <ul class="list-disc fw-bolder fs-4">
+      <div class="col-5 my-auto">
+        <ul class="list-disc fw-bolder fs-5">
           <li class="me-4 gains_color">Instagram</li>
           <li class="facebook_color">Facebook</li>
           <li class="depenses_color">Snapchat</li>
         </ul>
       </div>
     </div>
-    <div class="row">
+    <div class="row ms-1">
       <span class="col-9 fw-bold"
         >Plus de recommendation avec un taux de reconversion des visiteurs de
         60%</span

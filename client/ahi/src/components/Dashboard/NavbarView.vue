@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white mb-4 navbar-view shadow-sm icons">
+  <nav class="bg-white mb-4 p-1 navbar-view icons dashboard-card">
     <div class="ms-1">
       <ul class="list-reset flex">
         <li>
@@ -114,7 +114,6 @@ export default {
 .navbar-view svg {
   --tw-text-opacity: 1;
   color: rgba(30, 64, 175, var(--tw-text-opacity));
-  width: 25px;
-  height: 25px;
+  height: 30px;
 }
 </style>

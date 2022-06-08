@@ -1,6 +1,6 @@
 <template>
-  <aside class="sidebar bg-white rounded me-3" aria-label="Sidebar">
-    <div class="fw-bolder text-center mb-16 mt-3">
+  <aside class="sidebar bg-white me-3" aria-label="Sidebar">
+    <div class="fw-bolder text-center mb-24 mt-3">
       AHI <br />
       MARKETPLACE <br />
     </div>
@@ -63,16 +63,12 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .sidebar {
   /* width: 12%; */
   /* margin: 1rem !important; */
   margin-left: 1.5rem !important;
-}
-.sidebar svg {
-  --tw-text-opacity: 1;
-  color: rgba(30, 64, 175, var(--tw-text-opacity));
-  width: 25px;
-  height: 25px;
+  max-height: 55.7rem;
+  border-radius: 10px;
 }
 </style>

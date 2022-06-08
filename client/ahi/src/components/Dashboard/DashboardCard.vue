@@ -17,10 +17,16 @@ export default {};
 <style>
 /* .dashboard-card{} */
 
-.title {
+.dashboard-card .title {
   color: #29b9ad;
 }
 .dashboard-card {
   box-shadow: 0px 0.8px 2px 0px black;
+}
+
+.dashboard-card .outlined {
+  outline: 2px solid #29b9ad;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
 }
 </style>
