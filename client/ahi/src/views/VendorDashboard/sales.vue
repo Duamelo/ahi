@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(customer, index) in values()" :key="index" class="my-4">
+          <tr v-for="(customer, index) in values" :key="index" class="my-4">
             <td>{{ customer.code }}</td>
             <td>{{ customer.verified ? "Verifié" : "Invité" }}</td>
             <td>{{ customer.state }}</td>
@@ -67,13 +67,13 @@
         </tbody>
       </table>
     </div>
-  </dashboard-card>
   <pagination
     v-model:page_index="page_index"
     v-model:limit_index="limit_index"
     :limits="limits"
     :size="sales.length"
   />
+  </dashboard-card>
 </template>
 <style>
 svg {
@@ -98,14 +98,13 @@ import DashboardCard from "../../components/Dashboard/DashboardCard.vue";
 import Pagination from "../../components/Dashboard/Pagination.vue";
 import { ChevronRightIcon,ChevronDownIcon, TrashIcon, FolderIcon } from "@heroicons/vue/outline";
 
-var limits = [10, 25, 50, 100];
-var page_index = 0;
-var limit_index = 0;
-function values() {
-  let begin = page_index * limits[limit_index];
-  let end = Math.min(begin + limits[limit_index], sales.length);
-  return sales.slice(begin, end);
-}
+import { computed, ref } from 'vue'
+
+const limits = [10, 25, 50, 100];
+const page_index = ref(0);
+const limit_index = ref(1);
+
+const values = computed(()=>Pagination.methods.values(sales,page_index.value,limits[limit_index.value]))
 const sales = [
   {
     code: "02:a3:5b:54:42:40",

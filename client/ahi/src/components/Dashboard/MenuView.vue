@@ -65,6 +65,7 @@ export default {
     ClipboardListIcon,
     ShoppingCartIcon,
     UserIcon,
+    UserGroupIcon
   },
 };
 </script>
