@@ -1,9 +1,9 @@
 <template>
   <li>
-    <a :href="href" class="menu-item hover:bg-gray-200 hover:text-black">
+    <router-link  :to="href" class="menu-item hover:bg-gray-200 hover:text-black">
       <div class="mr-1.5"><slot name="icon" /></div>
       <slot></slot>
-    </a>
+    </router-link>
   </li>
 </template>
 

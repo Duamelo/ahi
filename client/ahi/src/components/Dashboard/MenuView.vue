@@ -6,35 +6,35 @@
     </div>
     <div class="fw-bolder text-center mb-3">PAGES & APPS <br /></div>
     <ul class="icons space-y-2 p-2">
-      <item href="/Email">
+      <item href="/dashboard/email">
         <template #icon> <MailIcon /> </template>
         Email
       </item>
-      <item href="/Chat">
+      <item href="/dashboard/chat">
         <template #icon> <ChatAltIcon /> </template>
         Chat
       </item>
-      <item href="/Calendrier">
+      <item href="/dashboard/calendrier">
         <template #icon> <CalendarIcon /> </template>
         Calendrier
       </item>
-      <item href="/Tasks">
+      <item href="/dashboard/tasks">
         <template #icon> <ClipboardListIcon /> </template>
         Tasks
       </item>
-      <item href="/E-COM">
+      <item href="/dashboard/e-com">
         <template #icon> <ShoppingCartIcon /> </template>
         E-COM
       </item>
-      <item href="/User">
+      <item href="/dashboard/user">
         <template #icon> <UserIcon /> </template>
         User
       </item>
-      <item href="/CATALOGUES"> CATALOGUES </item>
-      <item href="/CUSTOMERS"> CUSTOMERS </item>
-      <item href="/SALES"> SALES </item>
-      <item href="/SETTINGS"> SETTINGS </item>
-      <item href="/MARKETING"> MARKETING </item>
+      <item href="/dashboard/catalogues"> CATALOGUES </item>
+      <item href="/dashboard/customers"> CUSTOMERS </item>
+      <item href="/dashboard/sales"> SALES </item>
+      <item href="/dashboard/settings"> SETTINGS </item>
+      <item href="/dashboard/marketting"> MARKETING </item>
     </ul>
   </aside>
 </template>

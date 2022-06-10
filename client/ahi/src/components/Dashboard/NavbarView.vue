@@ -3,38 +3,38 @@
     <div class="ms-1">
       <ul class="list-reset flex">
         <li>
-          <a href="/Email"><MailIcon /></a>
+          <router-link to="/dashboard/email"><MailIcon /></router-link>
         </li>
         <li>
-          <a href="/Chat"><ChatAltIcon /></a>
+          <router-link to="/dashboard/chat"><ChatAltIcon /></router-link>
         </li>
         <li>
-          <a href="/Calendrier"><CalendarIcon /></a>
+          <router-link to="/dashboard/calendrier"><CalendarIcon /></router-link>
         </li>
         <li>
-          <a href="/Tasks"><ClipboardListIcon /></a>
+          <router-link to="/dashboard/tasks"><ClipboardListIcon /></router-link>
         </li>
       </ul>
     </div>
     <ul class="flex items-center list-reset">
       <li>
-        <a href="/E-COM"><TranslateIcon /></a>
+        <router-link to="/dashboard/e-com"><TranslateIcon /></router-link>
       </li>
       <li>
-        <a href="/E-COM"><MoonIcon /></a>
+        <router-link to="/dashboard/e-com"><MoonIcon /></router-link>
       </li>
       <li>
-        <a href="/E-COM"><SearchIcon /></a>
+        <router-link to="/dashboard/e-com"><SearchIcon /></router-link>
       </li>
       <li>
-        <a href="/E-COM"><ShoppingCartIcon /></a>
+        <router-link to="/dashboard/e-com"><ShoppingCartIcon /></router-link>
       </li>
       <li>
-        <a href="/User"><BellIcon /></a>
+        <router-link to="/dashboard/user"><BellIcon /></router-link>
       </li>
       <li class="me-1 my-1">
         <profile-view
-          href="/profile"
+          to="/profile"
           :nom="nom"
           :role="role"
           :profile="profile"
