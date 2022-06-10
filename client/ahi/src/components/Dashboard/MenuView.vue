@@ -30,6 +30,11 @@
         <template #icon> <UserIcon /> </template>
         User
       </item>
+      <item href="/dashboard/product">
+        <template #icon> <UserGroupIcon /> </template>
+        Products
+      </item>
+      
       <item href="/dashboard/catalogues"> CATALOGUES </item>
       <item href="/dashboard/customers"> CUSTOMERS </item>
       <item href="/dashboard/sales"> SALES </item>
@@ -48,6 +53,7 @@ import {
   ClipboardListIcon,
   ShoppingCartIcon,
   UserIcon,
+  UserGroupIcon
 } from "@heroicons/vue/outline";
 
 export default {
@@ -68,7 +74,7 @@ export default {
   /* width: 12%; */
   /* margin: 1rem !important; */
   margin-left: 1.5rem !important;
-  max-height: 55.7rem;
+  max-height: 69.7rem;
   border-radius: 10px;
 }
 </style>

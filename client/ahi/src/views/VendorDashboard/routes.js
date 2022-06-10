@@ -10,6 +10,7 @@ import sales from "./sales.vue"
 import settings from "./settings.vue"
 import marketting from "./marketting.vue"
 import dashboard from "./dashboard.vue"
+import product from "./product.vue"
 
 const routes = [
     { path: "", component: dashboard, },
@@ -24,5 +25,6 @@ const routes = [
     { path: "sales", component: sales, },
     { path: "settings", component: settings, },
     { path: "marketting", component: marketting, },
+    { path: "product", component: product, },
 ]
 export default routes;

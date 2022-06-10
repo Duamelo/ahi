@@ -24,10 +24,10 @@
         <router-link to="/dashboard/e-com"><MoonIcon /></router-link>
       </li>
       <li>
-        <router-link to="/dashboard/e-com"><SearchIcon /></router-link>
+        <router-link to="/dashboard/product"><SearchIcon /></router-link>
       </li>
       <li>
-        <router-link to="/dashboard/e-com"><ShoppingCartIcon /></router-link>
+        <router-link to="/dashboard/product"><ShoppingCartIcon /></router-link>
       </li>
       <li>
         <router-link to="/dashboard/user"><BellIcon /></router-link>
