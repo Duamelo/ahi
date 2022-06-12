@@ -1,19 +1,13 @@
 <template>
-  <li>
-    <button
-      class="btn"
-      :class="[
-        active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-        'block px-4 py-2 text-sm',
-      ]"
-    >
+    <option :value="value">
       <slot />
-    </button>
-  </li>
+    </option>
 </template>
 
 <script>
-export default {};
+export default {
+  props:["value"]
+};
 </script>
 
 <style></style>
