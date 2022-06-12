@@ -5,10 +5,12 @@
   </path-view>
   <dashboard-card>
     <template #title>
-      <input class="outlined me-3 w-75" placeholder="Filter" />
+      <input class="outlined me-3" placeholder="Rechercher par nom/e-mail" v-model="filtre" />
     </template>
     <template #left>
-      <button class="btn btn-outline-primary">+</button>
+      <router-link :to="append($route.path, 'new')">
+        <button class="btn btn-outline-primary">+</button>
+      </router-link>
     </template>
     <div class="mt-2">
       <table class="table">
@@ -22,18 +24,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(customer, index) in  values" :key="index" class="my-4">
+          <tr 
+            v-for="(customer, index) in values" 
+            :key="index" class="my-4">
             <td>{{ customer.name }}</td>
             <td>{{ customer.email }}</td>
             <td>{{ customer.verified ? "Verifié" : "Invité" }}</td>
             <td>
-              <button>
-                <PencilIcon />
-                Modifier
-              </button>
+              <router-link :to="append($route.path, `edit/${index}`)">
+                <button>
+                  <PencilIcon />
+                  Modifier
+                </button>
+              </router-link>
             </td>
             <td>
-              <button>
+              <button @click="delete_customer(customer.name)">
                 <TrashIcon />
                 Supprimer
               </button>
@@ -42,12 +48,12 @@
         </tbody>
       </table>
     </div>
-  <pagination
-    v-model:page_index="page_index"
-    v-model:limit_index="limit_index"
-    :limits="limits"
-    :size="customers.length"
-  />
+    <pagination
+      v-model:page_index="page_index"
+      v-model:limit_index="limit_index"
+      :limits="limits"
+      :size="customers.length"
+    />
   </dashboard-card>
 </template>
 <style>
@@ -60,26 +66,36 @@ button {
   display: inline-flex;
   margin-right: 10px;
 }
-table{
+table {
   transition-duration: 300ms;
 }
 </style>
 
 <script setup>
-import PathItem from "../../components/Path/PathItem.vue";
-import PathView from "../../components/Path/PathView.vue";
-import Products from "../../components/Dashboard/Catalogues/products.vue";
-import DashboardCard from "../../components/Dashboard/DashboardCard.vue";
-import Pagination from "../../components/Dashboard/Pagination.vue";
+import PathItem from "../../../components/Path/PathItem.vue";
+import PathView from "../../../components/Path/PathView.vue";
+import Products from "../../../components/Dashboard/Catalogues/products.vue";
+import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
+import Pagination from "../../../components/Dashboard/Pagination.vue";
 import { TrashIcon, PencilIcon } from "@heroicons/vue/outline";
-import { computed, ref } from 'vue'
+import { computed, ref } from "vue";
 
 const limits = [10, 25, 50, 100];
 const page_index = ref(0);
 const limit_index = ref(1);
-
-const values = computed(()=>Pagination.methods.values(customers,page_index.value,limits[limit_index.value]))
-var customers = [
+const filtre = ref("")
+const values = computed(() =>
+  Pagination.methods.values(
+    customers.value,
+    page_index.value,
+    limits[limit_index.value]
+  )
+);
+const customers = computed(()=> _customers.value.filter((customer) => customer.name.includes(filtre.value) || customer.email.includes(filtre.value)))
+function delete_customer(customer){
+  _customers.value = _customers.value.filter((c)=> c.name != customer)
+}
+var _customers = ref([
   {
     name: "Zane_Lehner",
     email: "Joanie_Kunze55@hotmail.com",
@@ -1080,5 +1096,5 @@ var customers = [
     email: "Opal12@gmail.com",
     verified: false,
   },
-];
+]);
 </script>

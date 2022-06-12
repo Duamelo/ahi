@@ -3,43 +3,35 @@
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item active="true" href="/dashboard/catalogues">Catalogues</path-item>
   </path-view>
-  <!-- <div class="d-flex justify-content-between">
-    <div>
-      <input type="checkbox" @click="expand=true">
-      <span v-if="expand">
-        Tout Fermer
-      </span>
-      <span v-else>
-        Tout Ouvrir
-      </span>
-    </div>
-    <div>
-    </div>
-  </div> -->
   <dashboard-card>
     <template #title>
-      <input type="checkbox" @click="expand = true" />
+      <input type="checkbox" v-model="expand" />
       <span v-if="expand"> Tout Fermer </span>
       <span v-else> Tout Ouvrir </span>
     </template>
     <template #left>
       <div>
-        <input class="outlined me-3" placeholder="Filter" />    
-        <button class="btn btn-outline-primary">+</button>
+        <input class="outlined me-3" placeholder="Rechercher par nom" v-model="filtre"/>
+        <router-link :to="append($route.path, 'new')">
+          <button class="btn btn-outline-primary">+</button>
+          </router-link>
       </div>
     </template>
-    <products :products="catalogue" :expand="expand"> </products>
+    <products v-model:products="catalogue" :filtre=filtre :expand="expand"/>
   </dashboard-card>
 </template>
 
 <script setup>
-import PathItem from "../../components/Path/PathItem.vue";
-import PathView from "../../components/Path/PathView.vue";
-import Products from "../../components/Dashboard/Catalogues/products.vue";
-import DashboardCard from "../../components/Dashboard/DashboardCard.vue";
+import PathItem from "../../../components/Path/PathItem.vue";
+import PathView from "../../../components/Path/PathView.vue";
+import Products from "../../../components/Dashboard/Catalogues/products.vue";
+import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
+import { computed, ref } from "vue";
 
-var expand = false;
-const catalogue = [
+const expand = ref(false);
+const filtre = ref("");
+
+const catalogue = ref([
   {
     category: "Automotive",
     products: [
@@ -205,7 +197,7 @@ const catalogue = [
       },
     ],
   },
-];
+]);
 </script>
 
 <style scoped>

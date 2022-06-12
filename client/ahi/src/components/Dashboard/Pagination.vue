@@ -1,5 +1,5 @@
 <template >
-  <div class="bg-white flex justify-between">
+  <div class="bg-white flex justify-between" v-if="size != 0 && size > limits[0]">
     <select
       :value="limit_index"
       @change="(e) => setLimit(e.target.value)"
@@ -27,7 +27,7 @@
         {{ size }} par page
       </option>
     </select>
-    <ul class="flex list-style-none">
+    <ul class="flex list-style-none" v-if="size > limit">
       <li>
         <button
           :class="{ disabled: previous_disabled, page_item: true }"
