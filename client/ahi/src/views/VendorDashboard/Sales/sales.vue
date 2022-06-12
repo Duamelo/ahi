@@ -4,12 +4,17 @@
     <path-item active="true" href="/dashboard/sales">Sales</path-item>
   </path-view>
   <dashboard-card>
-    <template #title>
-      <input class="outlined me-3 w-75" placeholder="Filter" />
+    <template #title class="d-flex justify-evenly">
+      <div class="d-flex justify-evenly">
+        <input class="outlined me-3 w-75" placeholder="Filter par code" v-model="filtre.code"/>
+        <input class="outlined me-3 w-75" placeholder="Filter par nom" v-model="filtre.nom"/>
+      </div>
     </template>
-    <template #left>
-      <button class="btn btn-outline-primary">+</button>
-    </template>
+    <!-- <template #left>
+      <router-link :to="append($route.path, 'new')">
+          <button class="btn btn-outline-primary">+</button>
+        </router-link>
+    </template> -->
     <div class="mt-2">
       <table class="table">
         <thead>
@@ -25,14 +30,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(customer, index) in values" :key="index" class="my-4">
-            <td>{{ customer.code }}</td>
-            <td>{{ customer.verified ? "Verifié" : "Invité" }}</td>
-            <td>{{ customer.state }}</td>
-            <td>{{ customer.price }}</td>
-            <td>{{ customer.last_modif }}</td>
-            <td>{{ customer.placed_at }}</td>
-            <td>{{ customer.shipping }}</td>
+          <tr v-for="(order, index) in values" :key="index" class="my-4">
+            <td>{{ order.code }}</td>
+            <td>{{ order.verified ? "Verifié" : "Invité" }}</td>
+            <td>{{ order.state }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.last_modif }}</td>
+            <td>{{ order.placed_at }}</td>
+            <td>{{ order.shipping }}</td>
             <td>
               <dropdown>
                 <template #untoggled>
@@ -47,13 +52,15 @@
                 </template>
                 <dropdown-content>
                   <item>
+                <router-link :to="append($route.path, index)">
                     <button>
-                      <FolderIcon />
-                      Ouvrir
-                    </button></item
-                  >
+                      <FolderIcon /> Ouvrir
+                    </button>
+                  </router-link >
+                    </item>
+
                   <item>
-                    <button>
+                    <button @click="delete_order(order.code)">
                       <TrashIcon />
                       Supprimer
                     </button>
@@ -88,24 +95,42 @@ button {
 </style>
 
 <script setup>
-import PathItem from "../../components/Path/PathItem.vue";
-import PathView from "../../components/Path/PathView.vue";
-import Products from "../../components/Dashboard/Catalogues/products.vue";
-import DropdownContent from "../../components/Dropdown/DropdownContent.vue";
-import Item from "../../components/Dropdown/DropdownItem.vue";
-import Dropdown from "../../components/Dropdown/DropdownMenu.vue";
-import DashboardCard from "../../components/Dashboard/DashboardCard.vue";
-import Pagination from "../../components/Dashboard/Pagination.vue";
-import { ChevronRightIcon,ChevronDownIcon, TrashIcon, FolderIcon } from "@heroicons/vue/outline";
+import PathItem from "../../../components/Path/PathItem.vue";
+import PathView from "../../../components/Path/PathView.vue";
+import Products from "../../../components/Dashboard/Catalogues/products.vue";
+import DropdownContent from "../../../components/Dropdown/DropdownContent.vue";
+import Item from "../../../components/Dropdown/DropdownItem.vue";
+import Dropdown from "../../../components/Dropdown/DropdownMenu.vue";
+import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
+import Pagination from "../../../components/Dashboard/Pagination.vue";
+import {
+  ChevronUpIcon,
+  ChevronDownIcon,
+  TrashIcon,
+  FolderIcon,
+} from "@heroicons/vue/outline";
 
-import { computed, ref } from 'vue'
+import { computed, ref } from "vue";
 
 const limits = [10, 25, 50, 100];
 const page_index = ref(0);
 const limit_index = ref(1);
+const filtre = ref({
+  code:"",
+  nom:""
+})
+const values = computed(() =>
+  Pagination.methods.values(sales.value, page_index.value, limits[limit_index.value])
+);
+const sales = computed(()=>
+  _sales.value.filter(order => /* order.nom.includes(filtre.value.nom) && */ order.code.includes(filtre.value.code))
+)
 
-const values = computed(()=>Pagination.methods.values(sales,page_index.value,limits[limit_index.value]))
-const sales = [
+function delete_order(code){
+  _sales.value = _sales.value.filter((c)=> c.code != code)
+}
+
+const _sales = ref([
   {
     code: "02:a3:5b:54:42:40",
     verified: false,
@@ -286,5 +311,5 @@ const sales = [
     placed_at: "2021-12-12T05:34:48.693Z",
     shipping: "West Group",
   },
-];
+]);
 </script>

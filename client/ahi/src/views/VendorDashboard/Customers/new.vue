@@ -1,0 +1,174 @@
+<template>
+  <path-view>
+    <path-item href="/dashboard"> Dashboard </path-item>
+    <path-item href="/dashboard/customers"> Customers </path-item>
+    <path-item :active="true"> Nouveau client</path-item>
+  </path-view>
+  <dashboard-card>
+    <template #title> Enrigistrer un client </template>
+    <template #left>
+      <button class="btn" @click="save()">Sauvegarder</button>
+    </template>
+    <form>
+      <div class="row">
+        <div class="col">
+          <div class="flex items-center mb-6">
+            <div class="mr-16">
+              <label
+                class="block text-gray-500 font-bold text-right mb-1 pr-4"
+                for="inline-password"
+              >
+                Nom
+              </label>
+            </div>
+            <div>
+              <input
+                v-model="item.name"
+                class="
+                  bg-gray-200
+                  appearance-none
+                  border-2 border-gray-200
+                  rounded
+                  w-full
+                  py-2
+                  px-4
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-purple-500
+                "
+                id="inline-password"
+                type="text"
+                placeholder="Mon produit"
+              />
+            </div>
+          </div>
+          <div class="flex items-center mb-6">
+            <div class="mr-16">
+              <label
+                class="block text-gray-500 font-bold text-right mb-1 pr-4"
+                for="inline-password"
+              >
+                Email
+              </label>
+            </div>
+            <div>
+              <input
+              v-model="item.email"
+                class="
+                  bg-gray-200
+                  appearance-none
+                  border-2 border-gray-200
+                  rounded
+                  w-full
+                  py-2
+                  px-4
+                  text-gray-700
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-purple-500
+                "
+                id="inline-password"
+                type="email"
+                placeholder="foo@bar.tmp"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="flex justify-center">
+            <div class="mb-3 w-96">
+              <label
+                for="formFileLg"
+                class="form-label inline-block mb-2 text-gray-700"
+                >Chosir une image</label
+              >
+              <input
+
+                @change="(e)=>item.image = e.target.value"
+                class="
+                  form-control
+                  block
+                  w-full
+                  px-2
+                  py-1.5
+                  text-xl
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700
+                  focus:bg-white
+                  focus:border-blue-600
+                  focus:outline-none
+                "
+                id="formFileLg"
+                type="file"
+              />
+            </div>
+          </div>
+          <div class="flex items-center mb-6">
+            <div class="mr-16">
+              <label
+                class="block text-gray-500 font-bold text-right mb-1 pr-4"
+                for="inline-password"
+              >
+                Verifié
+              </label>
+            </div>
+            <div>
+              <input
+              v-model="item.verified"
+                class="
+                  form-check-input
+                  appearance-none
+                  h-4
+                  w-4
+                  border border-gray-300
+                  rounded-sm
+                  bg-white
+                  checked:bg-blue-600 checked:border-blue-600
+                  focus:outline-none
+                  transition
+                  duration-200
+                  mt-1
+                  align-top
+                  bg-no-repeat bg-center bg-contain
+                  float-left
+                  mr-2
+                  cursor-pointer
+                "
+                id="inline-password"
+                type="checkbox"
+                placeholder="Mon produit"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </dashboard-card>
+</template>
+
+<script setup>
+import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
+import PathItem from "../../../components/Path/PathItem.vue";
+import PathView from "../../../components/Path/PathView.vue";
+import { ref } from '@vue/reactivity';
+const item = ref({
+  name:"",
+  email:"",
+  image:"",
+  verified: true
+
+})
+
+function save(){
+  console.log(item.value);
+}
+</script>
+
+<style scoped>
+</style>
