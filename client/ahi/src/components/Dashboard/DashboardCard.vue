@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-card block p-6 rounded-lg bg-white">
     <div class="flex justify-between">
-      <span class="title leading-tight font-medium mb-3 uppercase">
+      <span class="title leading-tight font-medium fw-bold mb-3 uppercase">
         <slot name="title" />
       </span>
       <slot name="left" />
@@ -21,7 +21,7 @@ export default {};
   color: #29b9ad;
 }
 .dashboard-card {
-  box-shadow: 0px 0.8px 2px 0px black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .dashboard-card .outlined {

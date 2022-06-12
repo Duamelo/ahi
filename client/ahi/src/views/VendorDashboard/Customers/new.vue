@@ -1,5 +1,5 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item href="/dashboard/customers"> Customers </path-item>
     <path-item :active="true"> Nouveau client</path-item>
@@ -7,36 +7,20 @@
   <dashboard-card>
     <template #title> Enrigistrer un client </template>
     <template #left>
-      <button class="btn" @click="save()">Sauvegarder</button>
+      <button class="button-outlined" @click="save()">Sauvegarder</button>
     </template>
     <form>
       <div class="row">
         <div class="col">
           <div class="flex items-center mb-6">
             <div class="mr-16">
-              <label
-                class="block text-gray-500 font-bold text-right mb-1 pr-4"
-                for="inline-password"
-              >
+              <label>
                 Nom
               </label>
             </div>
             <div>
               <input
                 v-model="item.name"
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-purple-500
-                "
-                id="inline-password"
                 type="text"
                 placeholder="Mon produit"
               />
@@ -44,29 +28,13 @@
           </div>
           <div class="flex items-center mb-6">
             <div class="mr-16">
-              <label
-                class="block text-gray-500 font-bold text-right mb-1 pr-4"
-                for="inline-password"
-              >
+              <label>
                 Email
               </label>
             </div>
             <div>
               <input
               v-model="item.email"
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-purple-500
-                "
-                id="inline-password"
                 type="email"
                 placeholder="foo@bar.tmp"
               />
@@ -84,26 +52,7 @@
               <input
 
                 @change="(e)=>item.image = e.target.value"
-                class="
-                  form-control
-                  block
-                  w-full
-                  px-2
-                  py-1.5
-                  text-xl
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700
-                  focus:bg-white
-                  focus:border-blue-600
-                  focus:outline-none
-                "
+                
                 id="formFileLg"
                 type="file"
               />
@@ -111,10 +60,7 @@
           </div>
           <div class="flex items-center mb-6">
             <div class="mr-16">
-              <label
-                class="block text-gray-500 font-bold text-right mb-1 pr-4"
-                for="inline-password"
-              >
+              <label>
                 Verifié
               </label>
             </div>

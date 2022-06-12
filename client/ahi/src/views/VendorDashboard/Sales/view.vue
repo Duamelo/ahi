@@ -1,5 +1,5 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item  href="/dashboard/sales">Sales</path-item>
     <path-item active="true" href="/dashboard/sales">{{ $route.params.id }}  </path-item>

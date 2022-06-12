@@ -1,5 +1,5 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
 <path-item href="/dashboard"> Dashboard </path-item>
     <path-item href="/dashboard/product"> Products </path-item>
     <path-item :active="true"> Nouveau produit</path-item>
@@ -7,68 +7,25 @@
   <dashboard-card>
     <template #title> Creer un produit </template>
     <template #left>
-      <button class="btn" @click="save()" >Enregistrer</button>
+      <button class="button-outlined" @click="save()" >Enregistrer</button>
     </template>
     <form>
       <div class="row">
         <div class="col">
           <div class="flex items-center mb-6">
             <div class="mr-16">
-              <label
-                class="block text-gray-500 font-bold text-right mb-1 pr-4"
-                for="inline-password"
-              >
-                Nom
-              </label>
+              <label> Nom </label>
             </div>
             <div>
-              <input
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-purple-500
-                "
-                id="inline-password"
-                type="text"
-                placeholder="Mon produit"
-                v-model="item.name"
-              />
+              <input type="text" placeholder="Mon produit" v-model="item.name"/>
             </div>
           </div>
           <div class="flex items-center mb-6">
             <div>
-              <label
-                class="block text-gray-500 font-bold text-right mb-1 pr-4"
-                for="inline-password"
-              >
-                Description
-              </label>
+              <label> Description </label>
             </div>
             <div class="w-100">
-              <textarea
-                class="
-                  bg-gray-200
-                  appearance-none
-                  border-2 border-gray-200
-                  rounded
-                  w-full
-                  py-2
-                  px-4
-                  text-gray-700
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-purple-500
-                "
-                id="inline-password"
-                v-model="item.description"
-                type="text"
-                placeholder="Mon produit"
+              <textarea v-model="item.description" type="text" placeholder="Mon produit"
               />
             </div>
           </div>
@@ -76,35 +33,8 @@
         <div class="col">
           <div class="flex justify-center">
             <div class="mb-3 w-96">
-              <label
-                for="formFileLg"
-                class="form-label inline-block mb-2 text-gray-700"
-                >Chosir une image</label
-              >
-              <input
-                class="
-                  form-control
-                  block
-                  w-full
-                  px-2
-                  py-1.5
-                  text-xl
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700
-                  focus:bg-white
-                  focus:border-blue-600
-                  focus:outline-none
-                "
-                @change="(e) => item.image = e.target.value"
-                id="formFileLg"
-                type="file"
+              <label class="center">Chosir une image</label>
+              <input @change="(e) => item.image = e.target.value" id="formFileLg" type="file"
               />
             </div>
           </div>

@@ -16,7 +16,7 @@
       </item>
     </ul>
     <div class="flex justify-end">
-      <button type="button" class="btn btn-outline-primary">+</button>
+      <button type="button" class="button-outlined">+</button>
     </div>
   </dashboard-card>
 </template>

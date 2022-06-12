@@ -1,18 +1,18 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item active="true" href="/dashboard/customers">Customers</path-item>
   </path-view>
-  <dashboard-card>
+  <dashboard-card class="dashboard-customer">
     <template #title>
       <input class="outlined me-3" placeholder="Rechercher par nom/e-mail" v-model="filtre" />
     </template>
     <template #left>
       <router-link :to="append($route.path, 'new')">
-        <button class="btn btn-outline-primary">+</button>
+        <button class="button-outlined" >+</button>
       </router-link>
     </template>
-    <div class="mt-2">
+    <div class="mt-2 scrollable">
       <table class="table">
         <thead>
           <tr>
@@ -32,14 +32,14 @@
             <td>{{ customer.verified ? "Verifié" : "Invité" }}</td>
             <td>
               <router-link :to="append($route.path, `edit/${index}`)">
-                <button>
+                <button class="button-outlined" >
                   <PencilIcon />
                   Modifier
                 </button>
               </router-link>
             </td>
             <td>
-              <button @click="delete_customer(customer.name)">
+              <button class="button-outlined" @click="delete_customer(customer.name)">
                 <TrashIcon />
                 Supprimer
               </button>
@@ -56,13 +56,14 @@
     />
   </dashboard-card>
 </template>
-<style>
+<style scopeed>
+.dashboard-customer
 svg {
   height: 30px;
   margin-right: 4px;
 }
 
-button {
+button  {
   display: inline-flex;
   margin-right: 10px;
 }

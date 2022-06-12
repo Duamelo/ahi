@@ -1,5 +1,5 @@
 <template>
-  <dashboard-card class="mb-3">
+  <dashboard-card class="mb-3 ">
     <template #title> Channels </template>
     <template #left>
       <a class="text-black" href="#none"
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="row ms-1">
-      <span class="col-9 fw-bold"
+      <span class="fw-bold"
         >Plus de recommendation avec un taux de reconversion des visiteurs de
         60%</span
       >

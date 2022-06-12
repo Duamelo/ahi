@@ -1,25 +1,25 @@
 <template>
   <Card class="statistic-card">
     <template #title> Statistics </template>
-    <div class="row row-cols-2 justify-around icons">
-      <Item name="Clients" class="me-4" :count="clients">
+    <div class="row row-cols-2 justify-around icons mt-2">
+      <Item name="Clients" class="mb-9 me-4" :count="clients">
         <template #icon>
-          <MailIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
+          <MailIcon />
         </template>
       </Item>
-      <Item name="Revenue" :count="revenue">
+      <Item name="Revenue"  class="mb-9" :count="revenue">
         <template #icon>
-          <ChatAltIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
+          <ChatAltIcon />
         </template>
       </Item>
-      <Item name="Produits" class="me-4" :count="produits">
+      <Item name="Produits" class="me-4 mb-3" :count="produits">
         <template #icon>
-          <CalendarIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
+          <CalendarIcon />
         </template>
       </Item>
-      <Item name="Ventes" :count="ventes">
+      <Item name="Ventes" :count="ventes" class="mb-1">
         <template #icon>
-          <ClipboardListIcon class="bg-purple-900 p-1 rounded-3xl text-white" />
+          <ClipboardListIcon />
         </template>
       </Item>
     </div>
@@ -49,4 +49,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.statistic-card  .row span{
+  font-size: 16px;
+}
+</style>

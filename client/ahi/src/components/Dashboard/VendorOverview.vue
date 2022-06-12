@@ -1,5 +1,5 @@
 <template>
-  <dashboard-card class="mb-3">
+  <dashboard-card class="mb-3 mt-9">
     <template #title> Overview </template>
     <template #left>
       <ul class="flex list-disc fw-bolder">
@@ -15,8 +15,8 @@
         role="img"
       ></canvas>
     </div>
-    <div class="flex justify-end">
-      <button type="button" class="btn btn-outline-primary rounded-2xl">
+    <div class="flex justify-end mt-10">
+      <button type="button" class="button-outlined">
         {{ annee }}
       </button>
     </div>
@@ -85,7 +85,15 @@ export default {
   props: ["gains", "annee", "depenses"],
   mounted() {
     const ctx = this.$el.querySelector("canvas");
+    Chart.defaults.font.size = 20
+    Chart.defaults.font.weight = "bold"
     new Chart(ctx, {
+      defaults:{
+        font:{
+          size:32,
+          weight:"bold"
+        }
+      },
       type: "bar",
       data: {
         labels: [
@@ -131,6 +139,7 @@ export default {
               display: false,
             },
             ticks: {
+              padding: 20,
               backdropPadding: {
                 x: 10,
                 y: 4,
@@ -141,6 +150,10 @@ export default {
             grid: {
               display: false,
             },
+            ticks:{
+               padding: 20,
+              
+            }
           },
         },
         plugins: {

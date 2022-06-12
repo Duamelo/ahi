@@ -5,23 +5,12 @@
       <div class="d-flex">
         <input class="outlined me-3" placeholder="# Search by tag" />
         <dropdown>
-          <template #untoggled>
-            <button class="outlined d-flex">
-              <p class="m-1 title">STATUS</p>
-              <ChevronDownIcon class="w-6 h-6 my-1" />
-            </button>
-          </template>
           <template #toggled>
-            <button class="outlined d-flex">
-              <p class="m-1 title">STATUS</p>
-              <ChevronUpIcon class="w-6 h-6 my-1" />
-            </button>
+              STATUS
           </template>
-          <dropdown-content>
-            <item> 1 </item>
-            <item> 2 </item>
-            <item> 3 </item>
-          </dropdown-content>
+            <item value="1"> 1 </item>
+            <item value="2"> 2 </item>
+            <item value="3"> 3 </item>
         </dropdown>
       </div>
     </template>
@@ -58,7 +47,6 @@
 <script>
 import DashboardCard from "./DashboardCard.vue";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/vue/outline";
-import DropdownContent from "../Dropdown/DropdownContent.vue";
 import Item from "../Dropdown/DropdownItem.vue";
 import Dropdown from "../Dropdown/DropdownMenu.vue";
 // console.log(this.data);
@@ -69,7 +57,6 @@ export default {
     ChevronDownIcon,
     Dropdown,
     ChevronUpIcon,
-    DropdownContent,
     Item,
   },
 };

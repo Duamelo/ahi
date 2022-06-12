@@ -127,13 +127,13 @@ export default {
   --tw-text-opacity: 1;
   pointer-events: none;
   background-color: transparent;
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
+  color: #2563eb;
 }
 .page_item.active {
   -tw-bg-opacity: 1;
   --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  background-color: #1e3c87;
   color: white;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);

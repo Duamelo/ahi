@@ -4,28 +4,28 @@
       <div v-for="(row, index) in products.filter(((product) => product.category.includes(filtre)))" :key="index">
         <div class="line">
           <div class="category">
-            <button @click="collapsed[index] = !collapsed[index]">
+            <button  class="button-outlined" @click="collapsed[index] = !collapsed[index]">
               <FolderIcon />
             </button>
             {{ row.category }}
           </div>
           <div class="actions">
             <div>
-              <button @click="show_category(index)">
+              <button  class="button-outlined" @click="show_category(index)">
                 <FolderOpenIcon />
                 Contenu
               </button>
             </div>
             <div>
-              <router-link :to="append($route.path, `edit/${index}`)">
-                <button>
+              <router-link  :to="append($route.path, `edit/${index}`)">
+                <button class="button-outlined">
                   <PencilIcon />
                   Modifier
                 </button>
               </router-link>
             </div>
             <div>
-              <button @click="delete_category(index)">
+              <button  class="button-outlined" @click="delete_category(index)">
                 <TrashIcon />
                 Supprimer
               </button>
@@ -46,21 +46,21 @@
             </div>
             <div class="actions">
               <div>
-                <button @click="show_subcategory(subcategory, index)">
+                <button  class="button-outlined" @click="show_subcategory(subcategory, index)">
                   <FolderOpenIcon />
                   Contenu
                 </button>
               </div>
               <div>
-                <router-link :to="append($route.path, `edit/${index}`)">
-                  <button>
+                <router-link  :to="append($route.path, `edit/${index}`)">
+                  <button class="button-outlined">
                     <PencilIcon />
                     Modifier
                   </button>
                 </router-link>
               </div>
               <div>
-                <button @click="delete_subcategory(subcategory, index)">
+                <button  class="button-outlined" @click="delete_subcategory(subcategory, index)">
                   <TrashIcon />
                   Supprimer
                 </button>
@@ -77,7 +77,7 @@
       <template #left>
         <div>
           <input class="outlined me-3 w-75" placeholder="Rechercher par nom" v-model="shown.filter_product"/>
-          <button @click="shown.show = false" class="btn btn-outline-primary">
+          <button  class="button-outlined" @click="shown.show = false">
             X
           </button>
         </div>
@@ -93,8 +93,8 @@
               </td>
               <td>{{ product.price }} $</td>
               <td>
-                <router-link :to="`/dashboard/product/edit/${index}`">
-                  <button>
+                <router-link  :to="`/dashboard/product/edit/${index}`">
+                  <button class="button-outlined">
                     <PencilIcon />
                     Modifier
                   </button>

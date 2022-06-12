@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" class="flex hover:text-black items-center">
+  <div  class="flex items-center">
     <div class="me-1 ms-1">
       <span class="font-bold">
         {{ nom }}
@@ -9,8 +9,10 @@
         {{ role }}
       </span>
     </div>
-    <img :src="profile" class="profile me-1" />
-  </a>
+    <a :to="href">
+      <img :src="profile" class="profile me-1" />
+    </a>
+  </div>
 </template>
 
 <script>

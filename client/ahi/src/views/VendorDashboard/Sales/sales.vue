@@ -1,5 +1,5 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item active="true" href="/dashboard/sales">Sales</path-item>
   </path-view>
@@ -10,13 +10,8 @@
         <input class="outlined me-3 w-75" placeholder="Filter par nom" v-model="filtre.nom"/>
       </div>
     </template>
-    <!-- <template #left>
-      <router-link :to="append($route.path, 'new')">
-          <button class="btn btn-outline-primary">+</button>
-        </router-link>
-    </template> -->
-    <div class="mt-2">
-      <table class="table">
+    <div class="mt-2 scrollable">
+      <table class="table ">
         <thead>
           <tr>
             <th>Code</th>
@@ -50,7 +45,6 @@
                     <ChevronUpIcon class="w-6 h-6 my-1" />
                   </button>
                 </template>
-                <dropdown-content>
                   <item>
                 <router-link :to="append($route.path, index)">
                     <button>
@@ -65,7 +59,6 @@
                       Supprimer
                     </button>
                   </item>
-                </dropdown-content>
               </dropdown>
             </td>
             <td></td>
@@ -82,7 +75,7 @@
   />
   </dashboard-card>
 </template>
-<style>
+<style scoped>
 svg {
   height: 30px;
   margin-right: 4px;
@@ -98,7 +91,6 @@ button {
 import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
 import Products from "../../../components/Dashboard/Catalogues/products.vue";
-import DropdownContent from "../../../components/Dropdown/DropdownContent.vue";
 import Item from "../../../components/Dropdown/DropdownItem.vue";
 import Dropdown from "../../../components/Dropdown/DropdownMenu.vue";
 import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";

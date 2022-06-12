@@ -1,11 +1,11 @@
 <template>
-  <aside class="sidebar bg-white me-3" aria-label="Sidebar">
-    <div class="fw-bolder text-center mb-24 mt-3">
+  <aside class="sidebar me-3" aria-label="Sidebar">
+    <div class="mb-24 mt-3">
       AHI <br />
       MARKETPLACE <br />
     </div>
-    <div class="fw-bolder text-center mb-3">PAGES & APPS <br /></div>
-    <ul class="icons space-y-2 p-2">
+    <div class="mb-4">PAGES & APPS <br /></div>
+    <ul class="space-y-2">
       <item href="/dashboard/email">
         <template #icon> <MailIcon /> </template>
         Email
@@ -34,7 +34,7 @@
         <template #icon> <UserGroupIcon /> </template>
         Products
       </item>
-      
+
       <item href="/dashboard/catalogues"> CATALOGUES </item>
       <item href="/dashboard/customers"> CUSTOMERS </item>
       <item href="/dashboard/sales"> SALES </item>
@@ -53,7 +53,7 @@ import {
   ClipboardListIcon,
   ShoppingCartIcon,
   UserIcon,
-  UserGroupIcon
+  UserGroupIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -65,17 +65,20 @@ export default {
     ClipboardListIcon,
     ShoppingCartIcon,
     UserIcon,
-    UserGroupIcon
+    UserGroupIcon,
   },
 };
 </script>
 
-<style>
+<style scoped>
 .sidebar {
-  /* width: 12%; */
-  /* margin: 1rem !important; */
-  margin-left: 1.5rem !important;
-  max-height: 69.7rem;
+  background-color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 12.7%;
+  margin-left: 1rem;
+  max-height: 68rem;
   border-radius: 10px;
+  font-size: 18px;
 }
 </style>

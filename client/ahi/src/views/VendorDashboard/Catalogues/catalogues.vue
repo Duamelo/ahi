@@ -1,23 +1,21 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item active="true" href="/dashboard/catalogues">Catalogues</path-item>
   </path-view>
   <dashboard-card>
     <template #title>
-      <input type="checkbox" v-model="expand" />
-      <span v-if="expand"> Tout Fermer </span>
-      <span v-else> Tout Ouvrir </span>
+      Catalogues
     </template>
     <template #left>
-      <div>
+      <div class="flex">
         <input class="outlined me-3" placeholder="Rechercher par nom" v-model="filtre"/>
         <router-link :to="append($route.path, 'new')">
-          <button class="btn btn-outline-primary">+</button>
+          <button class="button-outlined">+</button>
           </router-link>
       </div>
     </template>
-    <products v-model:products="catalogue" :filtre=filtre :expand="expand"/>
+    <products v-model:products="catalogue" :filtre=filtre :expand="expand" class="mt-3"/>
   </dashboard-card>
 </template>
 

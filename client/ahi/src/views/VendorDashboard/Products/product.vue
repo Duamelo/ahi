@@ -1,23 +1,21 @@
 <template>
-  <path-view>
+  <path-view class="mb-3">
     <path-item href="/dashboard"> Dashboard </path-item>
     <path-item active="true" href="/dashboard/product">Products</path-item>
   </path-view>
   <dashboard-card>
-    <!-- <template #title>
-      <input type="checkbox" v-model="expand" />
-      <span v-if="expand"> Tout Fermer </span>
-      <span v-else> Tout Ouvrir </span>
-    </template> -->
+    <template #title>
+      Product
+    </template>
     <template #left>
-      <div>
+      <div class="flex">
         <input class="outlined me-3" placeholder="Rechercher par nom" v-model="filtre" />
         <router-link :to="append($route.path, 'new')">
-          <button class="btn btn-outline-primary">+</button>
+          <button class="button-outlined">+</button>
         </router-link>
       </div>
     </template>
-    <div class="mt-2">
+    <div class="mt-7 scrollable">
       <div v-for="(product, index) in values" :key="index">
         <div class="line">
           <div class="product">
@@ -26,12 +24,12 @@
           </div>
           <div class="actions">
             <router-link :to="append($route.path, `edit/${index}`)">
-              <button>
+              <button class="button-outlined">
                 <PencilIcon />
                 Modifier
               </button>
             </router-link>
-            <button @click="delete_products(product.name)">
+            <button @click="delete_products(product.name)" class="button-outlined">
               <TrashIcon />
               Supprimer
             </button>
@@ -51,12 +49,6 @@
 img {
   height: 30px;
   margin-right: 4px;
-}
-.line {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .product,
