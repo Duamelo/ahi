@@ -1,40 +1,45 @@
 <template>
-  <aside class="bg-white rounded" aria-label="Sidebar">
-    <div class="fw-bolder text-center mb-16">
+  <aside class="sidebar me-3" aria-label="Sidebar">
+    <div class="mb-24 mt-3">
       AHI <br />
       MARKETPLACE <br />
     </div>
-    <div class="fw-bolder text-center">PAGES & APPS <br /></div>
-    <ul class="icons space-y-2 p-2">
-      <item href="/Email">
+    <div class="mb-4">PAGES & APPS <br /></div>
+    <ul class="space-y-2">
+      <item href="/dashboard/email">
         <template #icon> <MailIcon /> </template>
         Email
       </item>
-      <item href="/Chat">
+      <item href="/dashboard/chat">
         <template #icon> <ChatAltIcon /> </template>
         Chat
       </item>
-      <item href="/Calendrier">
+      <item href="/dashboard/calendrier">
         <template #icon> <CalendarIcon /> </template>
         Calendrier
       </item>
-      <item href="/Tasks">
+      <item href="/dashboard/tasks">
         <template #icon> <ClipboardListIcon /> </template>
         Tasks
       </item>
-      <item href="/E-COM">
+      <item href="/dashboard/e-com">
         <template #icon> <ShoppingCartIcon /> </template>
         E-COM
       </item>
-      <item href="/User">
+      <item href="/dashboard/user">
         <template #icon> <UserIcon /> </template>
         User
       </item>
-      <item href="/CATALOGUES"> CATALOGUES </item>
-      <item href="/CUSTOMERS"> CUSTOMERS </item>
-      <item href="/SALES"> SALES </item>
-      <item href="/SETTINGS"> SETTINGS </item>
-      <item href="/MARKETING"> MARKETING </item>
+      <item href="/dashboard/product">
+        <template #icon> <UserGroupIcon /> </template>
+        Products
+      </item>
+
+      <item href="/dashboard/catalogues"> CATALOGUES </item>
+      <item href="/dashboard/customers"> CUSTOMERS </item>
+      <item href="/dashboard/sales"> SALES </item>
+      <item href="/dashboard/settings"> SETTINGS </item>
+      <item href="/dashboard/marketting"> MARKETING </item>
     </ul>
   </aside>
 </template>
@@ -48,6 +53,7 @@ import {
   ClipboardListIcon,
   ShoppingCartIcon,
   UserIcon,
+  UserGroupIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -59,20 +65,20 @@ export default {
     ClipboardListIcon,
     ShoppingCartIcon,
     UserIcon,
+    UserGroupIcon,
   },
 };
 </script>
 
-<style>
-aside {
-  width: 10%;
-  margin: 1rem !important;
-  margin-left: 1.5rem !important;
-}
-.icons svg {
-  --tw-text-opacity: 1;
-  color: rgba(30, 64, 175, var(--tw-text-opacity));
-  width: 1.5rem;
-  height: 1.5rem;
+<style scoped>
+.sidebar {
+  background-color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 12.7%;
+  margin-left: 1rem;
+  max-height: 68rem;
+  border-radius: 10px;
+  font-size: 18px;
 }
 </style>
