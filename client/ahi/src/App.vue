@@ -1,12 +1,17 @@
 <script setup></script>
 
 <template>
-  <router-view></router-view>
+  <header>
+  <div class="app">
+    <!-- <h5>Ahi vue</h5> -->
+    <router-view/>
+  </div>
+  </header>
 </template>
 
 <style>
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .app {
   }
-}
+} */
 </style>
