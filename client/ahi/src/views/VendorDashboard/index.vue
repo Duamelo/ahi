@@ -2,7 +2,7 @@
 <template>
   <div class="vendor-dashboard">
     <div class="row">
-      <menu-view class="col-auto" />
+      <menu-view/>
       <div class="col">
         <navbar
           nom="John Doe"
@@ -21,6 +21,20 @@ import Navbar from "../../components/Dashboard/NavbarView.vue";
 </script>
 
 <style>
+/* Laptop */
+ @media (min-width: 1440px) {
+
+ }
+/* Tablet */
+ @media (min-width: 768px) {
+
+ }
+/* Mobile */
+ @media (max-width: 350px) {
+
+ }
+
+
 .vendor-dashboard {
   min-height: 100vh;
   padding-top: 32px;

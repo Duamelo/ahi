@@ -1,7 +1,7 @@
 <template>
-  <dashboard-card class="mb-3">
+  <dashboard-card class="mb-3 ">
     <template #title><div class="my-0.5">Transaction</div> </template>
-    <ul>
+    <ul class="grid sm:grid-cols-4 lg:grid-cols-1">
       <item>
         <template #icon><CreditCardIcon /></template>
         <template #leading>MoMo</template>

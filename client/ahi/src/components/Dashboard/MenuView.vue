@@ -71,13 +71,46 @@ export default {
 </script>
 
 <style scoped>
+/* Xl*/
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 14.7%;
+    max-height: 68rem;
+    grid-column: auto;
+  }
+}
+
+/* Laptop */
+@media (min-width: 870px) and (max-width: 1024px) {
+  .sidebar {
+    width: 20%;
+    max-height: 68rem;
+    grid-column: auto;
+  }
+}
+/* Tablet */
+@media (min-width: 425px) and (max-width: 870px) {
+  .sidebar {
+    width: 29%;
+    max-height: 68rem;
+    display: none;
+  }
+}
+/* Mobile */
+@media (max-width: 425px) {
+  .sidebar {
+    width: 49%;
+    max-height: 68rem;
+    display: none;
+
+  }
+}
+
 .sidebar {
   background-color: white;
   font-weight: bold;
   text-align: center;
-  width: 12.7%;
   margin-left: 1rem;
-  max-height: 68rem;
   border-radius: 10px;
   font-size: 18px;
 }

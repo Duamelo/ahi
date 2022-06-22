@@ -1,8 +1,8 @@
 <template>
   <Card>
     <template #title> Gains </template>
-    <div class="row">
-      <div class="col-7 me-5">
+    <div class="grid sm:grid-cols-6 gap-5">
+      <div class="xl:col-span-4 md:col-span-3 sm:col-span-6">
         Ce mois ci <br />
         <div class="text-purple-700">{{ benefices }} de bénnéfices</div>
         <br />
@@ -10,8 +10,8 @@
           Plus de {{ rapport }}% d'income par rapport au mois passé
         </span>
       </div>
-      <div class="col-3 text-3xl text-center fw-bold" style="margin-top: -41px">
-        <svg width="200" height="200">
+      <div class="xl:col-span-2 md:col-span-3 sm:col-span-6  text-3xl text-center fw-bold" >
+        <svg width="200" height="200" class="-mt-8">
           <circle
             cx="100"
             cy="90"

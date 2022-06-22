@@ -1,5 +1,5 @@
 <template>
-  <nav class=" navbar-view dashboard-card">
+  <nav class="navbar-view dashboard-card">
     <div class="ms-1">
       <ul class="list-reset flex">
         <li>
@@ -77,6 +77,20 @@ export default {
 </script>
 
 <style>
+/* Tablet */
+@media (min-width: 425px) and (max-width: 870px) {
+  .navbar-view {
+    display: none!important;;
+  }
+}
+/* Mobile */
+@media (max-width: 425px) {
+  .navbar-view {
+    display: none!important;;
+  }
+}
+
+
 .navbar-view {
   background: white;
   display: flex;

@@ -1,5 +1,5 @@
 <template>
-  <dashboard-card class="mb-3 mt-9">
+  <dashboard-card class="mb-3 mt-9" :collapsible="true">
     <template #title> Overview </template>
     <template #left>
       <ul class="flex list-disc fw-bolder">

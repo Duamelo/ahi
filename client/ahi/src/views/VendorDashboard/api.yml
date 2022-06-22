@@ -1,0 +1,524 @@
+openapi: '3.0.2'
+info:
+  title: Ahi Vendor Dashboard Api
+  version: '1.0'
+servers:
+  - url: localhost:3000/api/v1/vendor/dashboard
+components:
+  schemas:
+    client: 
+      type: object
+      properties:
+        id:
+          type: integer
+        nom: 
+          type: string
+        address:
+          type: string
+          format: email
+        verifie:
+          type: boolean
+        prenom: 
+          type: string
+    order:
+      type: object
+      properties:
+        id:
+          type: integer
+        client:
+          $ref: "#/components/schemas/client"
+        Updated_at: 
+          type: string
+        Placed at: 
+          type: string
+        shipping: 
+          type: string
+        etat:
+          type: string
+        produits:
+          type: array
+          items:
+            type: object
+            properties:
+              count:
+                type:
+                  integer
+              produit:
+                $ref: "#/components/schemas/product"
+    product: 
+      type: object
+      properties:
+        id:
+          type: integer
+        nom: 
+          type: string
+        prix: 
+          type: string
+        description: 
+          type: string
+        category_id:
+          type: integer
+        subcategory_id:
+          type: integer
+    
+    subcategory: 
+      type: object
+      properties:
+        id:
+          type: integer
+        nom: 
+          type: string
+        description: 
+          type: string
+        category_id:
+          type: integer
+    
+    category: 
+      type: object
+      properties:
+        id:
+          type: integer
+        nom: 
+          type: string
+        description: 
+          type: string
+tags:
+  - name: category
+  - name: dashboard
+  - name: client
+  - name: order
+  - name: product
+
+paths:
+  /statistic:
+    get:
+      tags:
+        - "dashboard"
+      description: 'Statistic generale de Ahi'
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: object
+                properties:
+                  clients: 
+                    type: integer
+                  revenue: 
+                    type: integer
+                  revenue_passe: 
+                    type: integer
+                  produits: 
+                    type: integer
+                  ventes:  
+                    type: integer
+              example:
+                clients: 9.842K
+                revenue: 700k (fcfa)
+                revenue_passe: 
+                produits: 240k 
+                ventes:  100k
+  /overview: 
+    get:
+      tags:
+        - "dashboard"
+      description: 'Table des gains et dépense'
+      parameters:
+        - name: annee
+          in: query
+          schema:
+            type: string
+            example:
+              2022
+
+
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: object
+                properties:
+                  gains:
+                    type: array
+                    items:
+                      type: integer
+                  depense:
+                    type: array
+                    items:
+                      type: integer
+  /channel:
+    get:
+      tags:
+        - "dashboard"
+      description: 'Taux des personnes ayant decouvert a travers ...'
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: object
+                properties:
+                  instagram:
+                    type: number
+                  facebook:
+                    type: number
+                  snapchat:
+                    type: number
+                example:
+                  instagram: 0.25
+                  facebook: 0.25
+                  snapchat: 0.5
+
+  /customers:
+    get: 
+      tags:
+        - "customers"
+      description: "les clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/client'
+             
+  /customers/{id}:
+    get:
+      tags:
+        - "customers"
+      description: "Infromation d'un clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/client'
+    post: 
+      tags:
+        - "customers"
+      description: "Creer Un client"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/client'
+      responses:
+        '200':
+          description: Ok 
+    delete: 
+      tags:
+        - "customers"
+      description: "Supprimer un client"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              type: integer
+      responses:
+        '200':
+          description: Ok 
+    put: 
+      tags:
+        - "customers"
+      description: "Creer Un client"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/client'
+      responses:
+        '200':
+          description: Ok 
+   
+
+
+  /customers/top:
+    get:
+      tags:
+        - "customers"
+      description: 'Top 5 des clients'
+      responses:
+        '200':
+          description: Ok
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/client'
+  /category:
+    get: 
+      tags:
+        - "category"
+      description: "les category"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/category'
+             
+  /category/{id}:
+    get:
+      tags:
+        - "category"
+      description: "Infromation d'un clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/client'
+    post: 
+      tags:
+        - "category"
+      description: "Creer Un category"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/category'
+      responses:
+        '200':
+          description: Ok 
+    delete: 
+      tags:
+        - "category"
+      description: "Supprimer un category"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              type: integer
+      responses:
+        '200':
+          description: Ok 
+    put: 
+      tags:
+        - "category"
+      description: "Creer Un category"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/category'
+      responses:
+        '200':
+          description: Ok 
+
+  /subcategory:
+    get: 
+      tags:
+        - "category"
+      description: "les subcategory"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/subcategory'
+             
+  /subcategory/{id}:
+    get:
+      tags:
+        - "category"
+      description: "Infromation d'un clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/client'
+    post: 
+      tags:
+        - "category"
+      description: "Creer Un subcategory"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/subcategory'
+      responses:
+        '200':
+          description: Ok 
+    delete: 
+      tags:
+        - "category"
+      description: "Supprimer un subcategory"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              type: integer
+      responses:
+        '200':
+          description: Ok 
+    put: 
+      tags:
+        - "category"
+      description: "Creer Un subcategory"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/subcategory'
+      responses:
+        '200':
+          description: Ok 
+  /order:
+    get: 
+      tags:
+        - "order"
+      description: "les order"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+             
+  /order/{id}:
+    get:
+      tags:
+        - "order"
+      description: "Infromation d'un clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/client'
+    post: 
+      tags:
+        - "order"
+      description: "Creer Un order"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/order'
+      responses:
+        '200':
+          description: Ok 
+    delete: 
+      tags:
+        - "order"
+      description: "Supprimer un order"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              type: integer
+      responses:
+        '200':
+          description: Ok 
+    put: 
+      tags:
+        - "order"
+      description: "Creer Un order"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/order'
+      responses:
+        '200':
+          description: Ok 
+  /product:
+    get: 
+      tags:
+        - "product"
+      description: "les product"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+             
+  /product/{id}:
+    get:
+      tags:
+        - "product"
+      description: "Infromation d'un clients"
+      responses:
+        '200':
+          description: Ok 
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/client'
+    post: 
+      tags:
+        - "product"
+      description: "Creer Un product"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/product'
+      responses:
+        '200':
+          description: Ok 
+    delete: 
+      tags:
+        - "product"
+      description: "Supprimer un product"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              type: integer
+      responses:
+        '200':
+          description: Ok 
+    put: 
+      tags:
+        - "product"
+      description: "Creer Un product"
+      requestBody:
+        description: Callback payload
+        content: 
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/product'
+      responses:
+        '200':
+          description: Ok 
+  

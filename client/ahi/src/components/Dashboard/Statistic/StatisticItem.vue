@@ -1,9 +1,9 @@
 <template>
-  <div class="row statistic-item justify-around">
-    <div class="col-3 my-auto me-1">
+  <div class="row statistic-item grid grid-cols-3 gap-3 justify-around">
+    <div class="col-span-1 my-auto me-1">
       <slot name="icon" />
     </div>
-    <div class="col-7">
+    <div class="col-span-2">
       <span class="font-bold text-nowrap">
         {{ count }}
         <br />

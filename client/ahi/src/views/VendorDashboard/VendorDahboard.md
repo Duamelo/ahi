@@ -7,11 +7,18 @@
 
 ## Etat actuelle
 - Information (fini)
-- Fonctionnaliter (en cour)
-- Presentation (un peu)
+- Fonctionnaliter (un peu)
+- Presentation (en cour)
 - Amelioration (aucune)
 
 # View
+- Responsiviter breakpoints:
+``` css
+
+```
+# Dashboard 
+- Responsiviter:
+    - Ajout de navbar en mode reduit
 ## Email
 ## Chat
 ## Calendrier

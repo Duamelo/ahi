@@ -1,5 +1,5 @@
 <template>
-  <dashboard-card class="mb-3">
+  <dashboard-card class="mb-3"  :collapsible="true">
     <template #title> Top Customers </template>
     <template #left>
       <div class="d-flex">
@@ -14,7 +14,7 @@
         </dropdown>
       </div>
     </template>
-    <div class="mt-2">
+    <div class="mt-2 scrollable">
       <table class="table">
         <thead>
           <tr>
