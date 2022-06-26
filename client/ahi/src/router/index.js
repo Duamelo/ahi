@@ -4,7 +4,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
 import BlogPost from "../views/BlogPost.vue";
-// import HomeView from "../views/Home.vue";
+import Category from "../views/Category.vue";
 import VendorDashboard from "../views/VendorDashboard.vue";
 
 const router = createRouter({
@@ -39,6 +39,11 @@ const router = createRouter({
       path: "/blogpost",
       name: "blogpost",
       component: BlogPost
+    },
+    {
+      path: "/category",
+      name: "category",
+      component: Category
     }
   ],
 });
