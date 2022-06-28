@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-card block p-6 rounded-lg bg-white">
-    <div class="flex justify-between">
+    <div class="flex justify-between md:flex-row" :class="{'flex-col items-center':collapsible}">
       <span class="title leading-tight font-medium fw-bold mb-3 uppercase">
         <slot name="title" />
       </span>
@@ -11,7 +11,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:['collapsible']
+};
 </script>
 
 <style>

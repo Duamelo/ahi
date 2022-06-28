@@ -58,28 +58,47 @@ const top_costumers = [
 </script>
 
 <template>
-  <div class="justify-between me-1 ms-1 mb-3 row">
+  <div
+    class="
+      justify-between
+      me-1
+      ms-1
+      mb-3
+      grid grid-cols-1
+      place-items-center
+      md:grid-cols-3
+      gap-4
+    "
+  >
     <!-- <div class="col-1"></div> -->
     <statistics
-      class="col-4"
+      class="col-span-1"
       clients="9.842K"
       revenue="700k (fcfa)"
       produits="240k"
       ventes="100k"
     />
-    <gains class="col-7" benefices="+100 k" rapport="75" entries="70" />
+    <gains
+      class="col-span-2 mb-3"
+      benefices="+100 k"
+      rapport="75"
+      entries="70"
+    />
   </div>
   <vendor-overview :gains="data_gains" :depenses="data_depenses" annee="2022" />
-  <div class="justify-between row channel_task_transaction">
-    <div class="col-4 ">
-      <vendor-channels :snapchat="25" :instagram="50" :facebook="25" />
-    </div>
-    <div class="col-5">
-      <vendor-tasks />
-    </div>
-    <div class="col-3">
-      <vendor-transactions />
-    </div>
+  <div
+    class="
+      justify-between
+      grid
+      lg:grid-cols-3
+      sm:grid-cols-4
+      gap-3
+      channel_task_transaction
+    "
+  >
+    <vendor-channels class="lg:col-span-1 sm:col-span-2" :snapchat="25" :instagram="50" :facebook="25" />
+    <vendor-tasks class="lg:col-span-1 sm:col-span-2" />
+    <vendor-transactions class="lg:col-span-1 sm:col-span-4" />
   </div>
   <div>
     <top-customers :data="top_costumers"></top-customers>
@@ -87,7 +106,7 @@ const top_costumers = [
 </template>
 
 <style>
-.channel_task_transaction .dashboard-card {
+/* .channel_task_transaction .dashboard-card {
   min-height: 320px;
-}
+} */
 </style>

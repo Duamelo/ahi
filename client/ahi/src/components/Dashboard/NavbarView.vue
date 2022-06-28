@@ -1,32 +1,35 @@
 <template>
-  <nav class=" navbar-view dashboard-card">
+  <nav class="navbar-view dashboard-card">
     <div class="ms-1">
       <ul class="list-reset flex">
+        <li class="nav-lg-none">
+          <router-link to="#" @click="s_witch()" ><MenuIcon /></router-link>
+        </li>
         <li>
           <router-link to="/dashboard/email"><MailIcon /></router-link>
         </li>
-        <li>
+        <li class="nav-md-none">
           <router-link to="/dashboard/chat"><ChatAltIcon /></router-link>
         </li>
-        <li>
+        <li class="nav-md-none">
           <router-link to="/dashboard/calendrier"><CalendarIcon /></router-link>
         </li>
-        <li>
+        <li class="nav-md-none">
           <router-link to="/dashboard/tasks"><ClipboardListIcon /></router-link>
         </li>
       </ul>
     </div>
     <ul class="flex items-center list-reset">
-      <li>
+      <li class="nav-md-none">
         <router-link to="/dashboard/e-com"><TranslateIcon /></router-link>
       </li>
-      <li>
+      <li class="nav-md-none">
         <router-link to="/dashboard/e-com"><MoonIcon /></router-link>
       </li>
-      <li>
+      <li class="nav-md-none">
         <router-link to="/dashboard/product"><SearchIcon /></router-link>
       </li>
-      <li>
+      <li class="nav-md-none">
         <router-link to="/dashboard/product"><ShoppingCartIcon /></router-link>
       </li>
       <li>
@@ -48,6 +51,7 @@
 import ProfileView from "./NavbarProfile.vue";
 
 import {
+  MenuIcon,
   MailIcon,
   ChatAltIcon,
   CalendarIcon,
@@ -60,8 +64,15 @@ import {
 } from "@heroicons/vue/outline";
 
 export default {
-  props: ["nom", "role", "profile"],
+  props: ["nom", "role", "profile","show_sidebar"],
+  // emits: ["update:page_index","update:limit_index"],
+  methods: {
+      s_witch() {
+        this.$emit("update:show_sidebar", !this.show_sidebar);
+      }
+    },
   components: {
+    MenuIcon,
     ProfileView,
     MailIcon,
     ChatAltIcon,
@@ -77,6 +88,27 @@ export default {
 </script>
 
 <style>
+/* Tablet && Mobile */
+@media (max-width: 870px) {
+  .nav-md-none{
+    display: none!important;;
+  }
+
+  .navbar-view {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left:0;
+    display: flex;
+    overflow: hidden;
+    border-radius: 0;
+  }
+}
+@media (min-width: 870px) {
+  .nav-lg-none{
+    display: none!important;
+  }
+}
 .navbar-view {
   background: white;
   display: flex;

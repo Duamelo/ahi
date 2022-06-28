@@ -1,23 +1,32 @@
 <template>
   <Card class="statistic-card">
     <template #title> Statistics </template>
-    <div class="row row-cols-2 justify-around icons mt-2">
-      <Item name="Clients" class="mb-9 me-4" :count="clients">
+    <div
+      class="
+        grid
+        lg:grid-cols-2
+        md:grid-cols-1
+        sm:grid-cols-2
+        gap-y-4 gap-2
+        mt-2
+      "
+    >
+      <Item name="Clients" :count="clients">
         <template #icon>
           <MailIcon />
         </template>
       </Item>
-      <Item name="Revenue"  class="mb-9" :count="revenue">
+      <Item name="Revenue" :count="revenue">
         <template #icon>
           <ChatAltIcon />
         </template>
       </Item>
-      <Item name="Produits" class="me-4 mb-3" :count="produits">
+      <Item name="Produits" :count="produits">
         <template #icon>
           <CalendarIcon />
         </template>
       </Item>
-      <Item name="Ventes" :count="ventes" class="mb-1">
+      <Item name="Ventes" :count="ventes">
         <template #icon>
           <ClipboardListIcon />
         </template>
@@ -50,7 +59,7 @@ export default {
 </script>
 
 <style>
-.statistic-card  .row span{
+.statistic-card .row span {
   font-size: 16px;
 }
 </style>

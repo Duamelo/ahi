@@ -1,10 +1,12 @@
 <template>
-  <aside class="sidebar me-3" aria-label="Sidebar">
-    <div class="mb-24 mt-3">
+  <aside class="sidebar transition ease-in-out me-3" aria-label="Sidebar" v-if="show">
+    
+    <div class="mb-24 mt-3 header">
       AHI <br />
       MARKETPLACE <br />
     </div>
-    <div class="mb-4">PAGES & APPS <br /></div>
+    <div class="mb-4 mt-2 md:mt-0">PAGES & APPS <br /></div>
+    <span @click="s_witch()"> x </span>
     <ul class="space-y-2">
       <item href="/dashboard/email">
         <template #icon> <MailIcon /> </template>
@@ -57,6 +59,13 @@ import {
 } from "@heroicons/vue/outline";
 
 export default {
+  props: ["show"],
+  // emits: ["update:page_index","update:limit_index"],
+  methods: {
+      s_witch() {
+        this.$emit("update:show", !this.show);
+      }
+    },
   components: {
     Item,
     MailIcon,
@@ -71,13 +80,60 @@ export default {
 </script>
 
 <style scoped>
+/* Xl*/
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 14.7%;
+    max-height: 68rem;
+    grid-column: auto;
+  }
+}
+
+/* Laptop */
+@media (min-width: 870px) and (max-width: 1024px) {
+  .sidebar {
+    width: 20%;
+    margin-left: 1rem;
+    max-height: 68rem;
+    grid-column: auto;
+  }
+}
+/* Tablet  && Mobile*/
+@media  (max-width: 870px) {
+  .header{
+    display: none;
+  }
+  .sidebar {
+    max-height: 68rem;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    height: 100vh;
+    margin: 0;
+  }
+}
+
+/* Tablet */
+@media (min-width: 425px) and (max-width: 870px)  {
+  .sidebar {
+    width: 23%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 425px) {
+  .sidebar {
+    width: 47%;
+  }
+}
+
 .sidebar {
   background-color: white;
+  
   font-weight: bold;
   text-align: center;
-  width: 12.7%;
-  margin-left: 1rem;
-  max-height: 68rem;
   border-radius: 10px;
   font-size: 18px;
 }

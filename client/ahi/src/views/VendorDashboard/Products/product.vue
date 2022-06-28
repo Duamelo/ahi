@@ -18,7 +18,7 @@
     <div class="mt-7 scrollable">
       <div v-for="(product, index) in values" :key="index">
         <div class="line">
-          <div class="product">
+          <div class="produc_t">
             <img :src="product.picture" />
             {{ product.name }}
           </div>
@@ -51,7 +51,7 @@ img {
   margin-right: 4px;
 }
 
-.product,
+.produc_t,
 button {
   display: inline-flex;
   margin-right: 10px;

@@ -2,12 +2,14 @@
 <template>
   <div class="vendor-dashboard">
     <div class="row">
-      <menu-view class="col-auto" />
+      <div class="blur-bg backdrop-blur-sm nav-lg-none" v-if="show_sidebar">  </div>
+      <menu-view v-model:show="show_sidebar"/>
       <div class="col">
         <navbar
           nom="John Doe"
           role="Vendeur"
           profile="/src/assets/profile.jpg"
+          v-model:show_sidebar="show_sidebar"
         />
         <router-view />
       </div>
@@ -18,9 +20,26 @@
 <script setup>
 import MenuView from "../../components/Dashboard/MenuView.vue";
 import Navbar from "../../components/Dashboard/NavbarView.vue";
+import { ref } from '@vue/reactivity';
+
+var show_sidebar = ref(false) 
 </script>
 
 <style>
+/* Laptop */
+ @media (min-width: 1440px) {
+
+ }
+/* Tablet */
+ @media (min-width: 768px) {
+
+ }
+/* Mobile */
+ @media (max-width: 350px) {
+
+ }
+
+
 .vendor-dashboard {
   min-height: 100vh;
   padding-top: 32px;
@@ -137,7 +156,15 @@ import Navbar from "../../components/Dashboard/NavbarView.vue";
   border-color: #d1d5db;
   border-style: solid;
 }
-
+.blur-bg{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: 3;
+  background-color: rgb(0 0 0/.2);
+}
 .vendor-dashboard input[type="file"]:hover {
   background-color: #ffffff;
   color: #374151;
