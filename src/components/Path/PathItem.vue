@@ -6,11 +6,11 @@
       </slot>
     </span>
 
-    <a v-else :href="href" class="font-medium hover:font-semibold">
+    <router-link v-else :to="href" class="font-medium hover:font-semibold">
       <slot>
         {{ href }}
       </slot>
-    </a>
+    </router-link>
   </li>
   <li v-if="!active">
     <span class="text-gray-500 mx-2"> > </span>

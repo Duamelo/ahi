@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" class="flex hover:text-black items-center">
+  <div  class="flex items-center">
     <div class="me-1 ms-1">
       <span class="font-bold">
         {{ nom }}
@@ -9,8 +9,10 @@
         {{ role }}
       </span>
     </div>
-    <img :src="profile" class="w-8 h-8 me-1" />
-  </a>
+    <a :to="href">
+      <img :src="profile" class="profile me-1" />
+    </a>
+  </div>
 </template>
 
 <script>
@@ -19,4 +21,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.profile {
+  border-radius: 2px;
+  width: 2rem /* 32px */;
+  height: 2rem /* 32px */;
+}
+</style>
