@@ -1,14 +1,12 @@
 # Cycle
 ## List
-- Information 
-- Presentation
-- Fonctionnaliter
+- Integration
+- Test
 - Amelioration
 
 ## Etat actuelle
-- Information (fini)
-- Fonctionnaliter (un peu)
-- Presentation (en cour)
+- Integration(en cour)
+- Test(aucun)
 - Amelioration (aucune)
 
 # View
@@ -17,8 +15,6 @@
 
 ```
 # Dashboard 
-- Responsiviter:
-    - Ajout de navbar en mode reduit
 ## Email
 ## Chat
 ## Calendrier
@@ -26,16 +22,10 @@
 ## E-COM
 ## User
 ## CATALOGUES
-copy de https://demo.vendure.io/admin/collections
-- Checkbox toggler
-
 ## CUSTOMERS
-copy de https://demo.vendure.io/admin/customers
-
 ## SALES
 copy de https://demo.vendure.io/admin/orders
 - Bug due au dropdown
-- Scroll
 
 ### Amelioration
 - Add Tab  [Active, Completed, Shipped] 
@@ -47,7 +37,6 @@ copy de https://demo.vendure.io/admin/orders
 ## SETTINGS
 ## MARKETING
 ## Product
-Before Catalogue
 copy de https://demo.vendure.io/admin/products
 - Filtre
 
@@ -87,6 +76,6 @@ Product/Products share the same classes
 # Component
 Optimiser les code des ref dans les script setup
 ## Pagination
-Not resposive
+When limits size is changed on an index that doesn't exist anymore nothing is shown
 ## Dropdown 
 Warning dans le treminal

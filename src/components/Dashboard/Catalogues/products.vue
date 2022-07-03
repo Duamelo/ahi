@@ -1,91 +1,53 @@
 <template>
   <div class="row">
-    <div class="col">
-      <div v-for="(row, index) in products.filter(((product) => product.category.includes(filtre)))" :key="index">
+    <empty v-if="categories_values.length == 0"/>
+      <div v-for="(category, index) in categories_values" :key="index">
         <div class="line">
           <div class="category">
-            <button  class="button-outlined" @click="collapsed[index] = !collapsed[index]">
+            <button  class="button-outlined" @click="toggle(index)">
               <FolderIcon />
             </button>
-            {{ row.category }}
+            <span>{{ category.name }}</span>
           </div>
           <div class="actions">
             <div>
-              <button  class="button-outlined" @click="show_category(index)">
-                <FolderOpenIcon />
-                Contenu
-              </button>
-            </div>
-            <div>
-              <router-link  :to="append($route.path, `edit/${index}`)">
+              <router-link  :to="append($route.path, `edit/${category.id}`)">
                 <button class="button-outlined">
                   <PencilIcon />
-                  Modifier
                 </button>
               </router-link>
             </div>
             <div>
-              <button  class="button-outlined" @click="delete_category(index)">
+              <button  class="button-outlined" @click="delete_category(category.id)">
                 <TrashIcon />
-                Supprimer
               </button>
             </div>
           </div>
         </div>
-        <div v-if="collapsed[index]">
-          <div
-            v-for="(subcategory, i) in [
-              ...new Set(row.products.map((item) => item.subcategory )),
-            ].filter(((subcategory) => subcategory.includes(filtre)))"
-            :key="i"
-            class="line"
-          >
-            <div class="subcategory">
-              <FolderIcon />
-              {{ subcategory }}
-            </div>
-            <div class="actions">
-              <div>
-                <button  class="button-outlined" @click="show_subcategory(subcategory, index)">
-                  <FolderOpenIcon />
-                  Contenu
-                </button>
-              </div>
-              <div>
-                <router-link  :to="append($route.path, `edit/${index}`)">
-                  <button class="button-outlined">
-                    <PencilIcon />
-                    Modifier
-                  </button>
-                </router-link>
-              </div>
-              <div>
-                <button  class="button-outlined" @click="delete_subcategory(subcategory, index)">
-                  <TrashIcon />
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-    <dashboard-card v-if="shown.show" class="col product-list">
+      <pagination
+        v-model:page_index="page_index"
+        v-model:limit_index="limit_index"
+        :limits="limits"
+        :size="categories_fitered.length"
+      />
+    <dashboard-card v-if="show_products" class="col product-list">
+    <empty v-if="products_values.length == 0"/>
       <template #title>
-        {{ this.shown.category }}({{ this.shown_products.length }} results)
+        {{ `${categories_values[shown].name} ${products_values.length}` }} 
       </template>
       <template #left>
-        <div>
-          <input class="outlined me-3 w-75" placeholder="Rechercher par nom" v-model="shown.filter_product"/>
-          <button  class="button-outlined" @click="shown.show = false">
-            X
+        <div class="flex justify-items-center">
+          <input class="outlined me-3 w-75" placeholder="Rechercher par nom" v-model="filter_product"/>
+          <button  class="button-outlined" >
+          <XIcon @click="show_products = false"/>            
           </button>
         </div>
       </template>
-      <div class="scrollable">
+      <div class="scrollable mt-4">
         <table class="table">
           <tbody>
-            <tr v-for="(product, index) in values" :key="index" class="my-4">
+            <tr v-for="(product, index) in products_values" :key="index" class="my-4">
               <td>
                 <div class="ms-3 fw-bolder my-auto">
                   {{ product.name }}
@@ -96,7 +58,6 @@
                 <router-link  :to="`/dashboard/product/edit/${index}`">
                   <button class="button-outlined">
                     <PencilIcon />
-                    Modifier
                   </button>
                 </router-link>
               </td>
@@ -105,10 +66,10 @@
         </table>
       </div>
       <pagination
-        v-model:page_index="page_index"
-        v-model:limit_index="limit_index"
+        v-model:page_index="product_page_index"
+        v-model:limit_index="product_limit_index"
         :limits="limits"
-        :size="shown_products.length"
+        :size="products_filtered.length"
       />
     </dashboard-card>
   </div>
@@ -120,78 +81,125 @@ import {
   FolderOpenIcon,
   TrashIcon,
   PencilIcon,
+  XIcon
 } from "@heroicons/vue/outline";
 import DashboardCard from "../DashboardCard.vue";
 import Pagination from "../Pagination.vue";
-
+import Empty from "../Empty.vue";
+// import { remove } from "../../../api/category";
+import { remove } from "../../../api/mock/category";
+// import { remove } from "../../../api/mock/error/category";
+const products = [
+      {
+        name: "Handmade Frozen Bike",
+        price: "40.00",
+        subcategory: "Practical",
+      },
+      {
+        name: "Tasty Cotton Ball",
+        price: "864.00",
+        subcategory: "Practical",
+      },
+      {
+        name: "Intelligent Wooden Towels",
+        price: "719.00",
+        subcategory: "Practical",
+      },
+      {
+        name: "Intelligent Soft Bacon",
+        price: "529.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Tasty Fresh Pants",
+        price: "676.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Small Granite Chicken",
+        price: "929.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Intelligent Granite Tuna",
+        price: "691.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Practical Cotton Ball",
+        price: "442.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Unbranded Fresh Shirt",
+        price: "893.00",
+        subcategory: "Rustic",
+      },
+      {
+        name: "Intelligent Steel Gloves",
+        price: "477.00",
+        subcategory: "Rustic",
+      },
+    ];
 export default {
   computed: {
-    shown_products(){
-      return this.shown.products.filter(((product) => product.name.includes(this.shown.filter_product)))
+    products_filtered(){
+        return products.filter(((product) => product.name.includes(this.filter_product)))
     },
-    values() {
+    products_values(){
+      return  Pagination.methods.values(
+        this.products_filtered,
+        this.product_page_index,
+        this.limits[this.product_limit_index]
+      )
+    },
+    categories_fitered(){
+        return this.categories.filter(((category) => category.name.includes(this.filtre)))
+    },
+    categories_values() {
       return Pagination.methods.values(
-        this.shown_products,
+        this.categories_fitered,
         this.page_index,
         this.limits[this.limit_index]
       )
     },
   },
   methods: {
-    show_category(index) {
-      this.shown.show = true;
-      this.shown.index = index;
-      this.shown.category = this.products[index].category;
-      this.shown.products = this.products[index].products;
+    toggle(index){
+      this.show_products = !this.show_products || this.shown  != index
+      this.shown = index;
     },
-    delete_category(index) {
-      this.$emit(
-        "update:products",
-        this.products.filter((product, i) => i != index)
-      );
-    },
-    show_subcategory(subcategory, index) {
-      this.shown.show = true;
-      this.shown.index = index;
-      this.shown.category = subcategory;
-      this.shown.products = this.products[index].products.filter(
-        (item) => item.subcategory == subcategory
-      );
-    },
-    delete_subcategory(subcategory, index) {
-      var foo = this.products;
-      foo[index].products = foo[index].products.filter((product) => product.subcategory != subcategory);
-      this.$emit(
-        "update:products",
-        this.products.filter((product, i) => i != index)
-      );
-    },
+    delete_category(id) {
+      remove(id,id => this.$emit(
+        "update:categories", 
+        this.categories.filter(category => category.id != id)
+      ));
+      
+    }
   },
   data() {
     return {
       limits: [5, 10, 25, 50, 100],
-      shown: {
-        show: false,
-        filter_category: "",
-        filter_product: "",
-        index: undefined,
-        category: "",
-        products: [],
-      },
+      filter_product: "",
+      show_products:false,
+      shown: 0,
       page_index: 0,
       limit_index: 0,
-      collapsed: Array.from((Array(this.products.length)),(_)=>this.expand),
+      product_page_index: 0,
+      product_limit_index: 0,
     };
   },
   components: {
     DashboardCard,
+    Empty,
     FolderIcon,
+    XIcon,
     FolderOpenIcon,
     TrashIcon,
     PencilIcon,
     Pagination,
   },
-  props: ["products", "expand","filtre"],
+  props: ["categories","filtre"],
 };
 </script>
 
@@ -211,14 +219,14 @@ svg {
   display: flex;
 }
 
-.subcategory,
 .category,
 button {
   display: inline-flex;
   margin-right: 10px;
 }
-.subcategory {
-  margin-left: 40px;
+.category > span {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .product-list {
   margin: 5px;
