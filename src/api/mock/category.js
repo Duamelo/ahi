@@ -11,16 +11,22 @@ export function get(query, callback, error) {
     query = undefined;
     let result = Array.from(Array(10), (_, id) => ({
       id: id,
-      name: faker.commerce.department(),
+      name: faker.commerce.department(), 
+      description: faker.commerce.productDescription(), 
+      image: faker.image.fashion() 
     }));
     callback(result);
     return;
   }
   if (typeof query == "number") {
-    callback({ id: query, name: faker.commerce.department() });
+    callback({ id: query, name: faker.commerce.department(), 
+      description: faker.commerce.productDescription(), 
+      image: faker.image.fashion() });
     return;
   }
-  callback({ id: faker.datatype.number(), query });
+  callback({ id: faker.datatype.number(), name: query , 
+    description: faker.commerce.productDescription(), 
+    image: faker.image.fashion() });
 }
 
 export function put(id, form, callback, error) {

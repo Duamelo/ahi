@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 export function create(form, callback, error) {
-  callback({ category: form });
+  callback({ customer: form });
 }
 
 export function get(query, callback, error) {
@@ -42,7 +42,7 @@ export function get(query, callback, error) {
 }
 
 export function put(id, form, callback, error) {
-  callback({ category: form });
+  callback({ customer: form });
 }
 
 export function remove(id, callback, error) {
