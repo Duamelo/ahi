@@ -4,6 +4,7 @@
       :value="limit_index"
       @change="(e) => setLimit(e.target.value)"
       class="
+        w-25
         form-select
         appearance-none
         px-3
