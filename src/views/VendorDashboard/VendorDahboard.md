@@ -63,10 +63,12 @@ copy de https://demo.vendure.io/admin/catalog/collections/2
 ## Customers/new
 copy de https://demo.vendure.io/admin/customer/customers/create
 - Image upload
-
+- On est sur que c'est dans le dashboard?
 ## Catalogues/:id
 copy de https://demo.vendure.io/admin/customer/customers/1
 - Image upload
+- On est sur que c'est dans le dashboard?
+
 
 
 
