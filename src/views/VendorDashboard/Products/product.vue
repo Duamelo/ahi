@@ -26,12 +26,10 @@
             <router-link :to="append($route.path, `edit/${index}`)">
               <button class="button-outlined">
                 <PencilIcon />
-                Modifier
               </button>
             </router-link>
-            <button @click="delete_products(product.name)" class="button-outlined">
+            <button @click="delete_products(product.id)" class="button-outlined">
               <TrashIcon />
-              Supprimer
             </button>
           </div>
         </div>
@@ -64,101 +62,30 @@ import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
 import Pagination from "../../../components/Dashboard/Pagination.vue";
 import { TrashIcon, PencilIcon } from "@heroicons/vue/outline";
 import { computed, ref } from "vue";
+// import { get } from "../../../api/product";
+import { get,remove } from "../../../api/mock/product";
+// import { get } from "../../../api/mock/error/product";
+
 const expand = ref(false);
 const limits = [10, 25, 50, 100];
 const page_index = ref(0);
 const limit_index = ref(1);
 const filtre = ref("");
+
+const products = ref([])
+get(value => products.value = value)
+
+const products_filtered = computed(()=> products.value.filter((product) => product.name.includes(filtre.value)))
+
+
 const values = computed(() =>
   Pagination.methods.values(
-    products.value,
+    products_filtered.value,
     page_index.value,
     limits[limit_index.value]
   )
-);const products = computed(()=> _products.value.filter((product) => product.name.includes(filtre.value)))
-function delete_products(name){
-  _products.value = _products.value.filter((p)=> p.name != name)
+)
+function delete_products(id){
+  products.value = products.value.filter(product=> product.id != id)
 }
-var _products = ref([
-  {
-    name: "Generic Cotton Car",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Sleek Concrete Hat",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Rustic Concrete Keyboard",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Awesome Metal Hat",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Handmade Wooden Bike",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Rustic Rubber Hat",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Awesome Fresh Bacon",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Practical Rubber Soap",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Incredible Fresh Soap",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Handcrafted Cotton Computer",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Small Frozen Chair",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Licensed Cotton Fish",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Gorgeous Cotton Shoes",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Small Steel Pants",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Refined Fresh Car",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Rustic Granite Pizza",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Tasty Soft Chicken",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Awesome Cotton Tuna",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Sleek Frozen Chair",
-    picture: "http://placeimg.com/640/480/business",
-  },
-  {
-    name: "Practical Fresh Salad",
-    picture: "http://placeimg.com/640/480/business",
-  },
-]);
 </script>
