@@ -4,7 +4,7 @@
   <header>
   <div class="app">
     <!-- <h5>Ahi vue</h5> -->
-    <router-view/>
+    <router-view />
   </div>
   </header>
 </template>

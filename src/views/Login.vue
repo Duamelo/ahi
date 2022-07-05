@@ -12,7 +12,7 @@
         src="@/assets/icons/ic_ahi_2.svg"
         alt="Icône - AHI 2"
       />
-      <div class="w-1/12"></div>
+      <div class="hidden md:flex w-1/12"></div>
     </div>
 
     <div class="flex flex-col gap-12 w-5/6 2xl:w-3/4 mx-auto my-20">
@@ -23,7 +23,7 @@
         >
       </div>
 
-      <div class="grid grid-cols-2 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div
           class="col-span-1 flex flex-col gap-10 bg-white rounded shadow-lg p-10"
         >
@@ -109,14 +109,14 @@
             </button>
           </div>
         </div>
-        <div class="col-span-2 bg-white rounded shadow-lg py-4">
+        <div class="col-span-1 md:col-span-2 bg-white rounded shadow-lg py-4">
           <div class="flex flex-col gap-3 w-2/3 mx-auto">
             <div class="text-black text-xl text-center font-bold">
               En un seul clique connectez vous. Suffit de connecter votre
               compte...
             </div>
             <button
-              class="w-1/5 bg-blue-900 text-white text-xl text-center font-semibold rounded-lg py-2.5 mx-auto"
+              class="w-3/5 md:w-1/5 bg-blue-900 text-white text-xl text-center font-semibold rounded-lg py-2.5 mx-auto"
             >
               Google
             </button>

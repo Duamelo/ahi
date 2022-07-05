@@ -7,7 +7,7 @@
     >
       <div class="flex flex-col gap-3 w-full items-center">
         <div
-          class="w-2/5 text-3xl 2xl:text-4xl text-blue-900 text-center font-bold"
+          class="w-full md:w-2/5 text-3xl 2xl:text-4xl text-blue-900 text-center font-bold"
         >
           Des recettes simples et faciles à faire en famille
         </div>
@@ -15,7 +15,7 @@
           Temps de lecture: <span class="font-normal">4min</span>
         </div>
         <div
-          class="w-3/5 text-lg 2xl:text-2xl text-green-300 text-center font-bold"
+          class="w-full md:w-3/5 text-lg 2xl:text-2xl text-green-300 text-center font-bold"
         >
           Des délices à souhait pour votre palais qui ne demandent que de finir
           dans votre estomac
@@ -31,10 +31,12 @@
           Ecrit par: <span class="font-normal">John Doe</span>
         </div>
       </div>
-      <div class="flex flex-row justify-between gap-5">
-        <div class="flex flex-col gap-12 w-5/6 items-start">
+      <div class="flex flex-col md:flex-row justify-between gap-5">
+        <div class="flex flex-col gap-12 w-full md:w-5/6 items-start">
           <div class="flex flex-col gap-3">
-            <div class="w-3/5 text-2xl 2xl:text-3xl text-green-300 font-bold">
+            <div
+              class="w-full md:w-3/5 text-2xl 2xl:text-3xl text-green-300 font-bold"
+            >
               Comment faire des repas en fonction de son budget ?
             </div>
             <div class="text-xl text-black font-medium">
@@ -56,14 +58,14 @@
               tellus. Dolor non viverra vel elementum. Mauris.
             </div>
           </div>
-          <div class="flex flex-row gap-5">
-            <div class="w-1/2 2xl:w-full">
+          <div class="flex flex-col md:flex-row gap-5">
+            <div class="w-full md:w-1/2 2xl:w-full">
               <img
                 src="@/assets/images/img_blogpost_2.png"
                 alt="Images - Blogpost 2"
               />
             </div>
-            <div class="w-1/2 text-xl text-black font-medium">
+            <div class="w-full md:w-1/2 text-xl text-black font-medium">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
               tellus egestas fames nulla tortor suspendisse. A orci, aliquam,
               ipsum est in fusce nunc. Id vitae id odio morbi sed mauris
@@ -116,7 +118,7 @@
           </div>
           <div class="flex flex-row w-full justify-between">
             <button
-              class="flex items-center gap-3 text-white text-xl font-bold bg-green-300 rounded-lg p-3"
+              class="flex items-center gap-3 text-white text-sm md:text-xl font-bold bg-green-300 rounded-lg p-2 md:p-3"
             >
               <img
                 src="@/assets/icons/ic_back_white.svg"
@@ -125,7 +127,7 @@
               Astuces du jour
             </button>
             <button
-              class="flex items-center gap-3 text-white text-xl font-bold bg-blue-900 rounded-lg p-3"
+              class="flex items-center gap-3 text-white text-sm md:text-xl font-bold bg-blue-900 rounded-lg p-2 md:p-3"
             >
               Bien vendre sur AHI
               <img
@@ -136,7 +138,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col gap-4 mt-10">
+        <div class="flex md:flex-col gap-4 mt-10">
           <button
             class="flex w-14 h-14 justify-center items-center bg-blue-900 rounded-lg"
           >

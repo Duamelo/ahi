@@ -61,8 +61,9 @@ export default {
   },
   mounted() {
     this.slides = this.$slots.default()[0].children;
-    console.log(this.$slots.default()[0].children)
+    console.log(this.$slots.default()[0].children);
 
+    setInterval(this.next, 10000);
     /*
         this.slides.forEach((slide, i) => {
             slide.index = i
