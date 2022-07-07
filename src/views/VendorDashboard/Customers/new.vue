@@ -167,10 +167,10 @@ function save() {
   show.value = true
   error.value = false
   message.value = "Customer enregistrer"
-},msg => {
+},error => {
   show.value = true
   error.value = true
-  message.value = msg.error
+    message.value = _error.message
 })
 }
 </script>

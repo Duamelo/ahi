@@ -63,8 +63,8 @@ import Alert from "../../../components/Dashboard/Alert.vue";
 const show = ref(false);
 const error = ref(false);
 const message = ref("");
-// import { create } from "../../../api/category";
-import { create } from "../../../api/mock/category";
+import { create } from "../../../api/category";
+// import { create } from "../../../api/mock/category";
 // import { create } from "../../../api/mock/error/category";
 const item = ref({
   name: "",
@@ -74,14 +74,14 @@ const item = ref({
 });
 
 function save() {
-  create(item,item => {
+  create(item.value,item => {
   show.value = true
   error.value = false
   message.value = "Produit crée"
-},msg => {
+},_error => {
   show.value = true
   error.value = true
-  message.value = msg.error
+  message.value = _error.message
 })
 }
 

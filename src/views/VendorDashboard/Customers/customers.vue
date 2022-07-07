@@ -83,8 +83,8 @@ import Alert from "../../../components/Dashboard/Alert.vue";
 const show = ref(false);
 const error = ref(false);
 const message = ref("");
-// import { get } from "../../../api/customer";
-import { get,remove } from "../../../api/mock/customer";
+import { get } from "../../../api/customer";
+// import { get,remove } from "../../../api/mock/customer";
 // import { get } from "../../../api/mock/error/customer";
 
 const limits = [10, 25, 50, 100];

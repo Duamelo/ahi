@@ -70,10 +70,10 @@ export default {
     (value) => {
       item.value = value;
     },
-    (msg) => {
+   _error => {
       show.value = true;
       error.value = true;
-      message.value = msg.error;
+        message.value = _error.message;
     }
   );
   }
@@ -86,8 +86,8 @@ import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
 import { ref } from "@vue/reactivity";
 import Alert from "../../../components/Dashboard/Alert.vue";
-// import { get,put } from "../../../api/category";
-import { get, put } from "../../../api/mock/category";
+import { get,put } from "../../../api/category";
+// import { get, put } from "../../../api/mock/category";
 // import { get,put } from "../../../api/mock/error/category";
 import { useRoute } from 'vue-router'
 const show = ref(false);
@@ -109,10 +109,10 @@ function save() {
       error.value = false;
       message.value = "Catalogue mise a jour";
     },
-    (msg) => {
+   _error => {
       show.value = true;
       error.value = true;
-      message.value = msg.error;
+        message.value = _error.message;
     }
   );
 }

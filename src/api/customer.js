@@ -1,8 +1,11 @@
 import { server } from ".";
 
-const baseUrl = `${server.url}/customer`;
+const baseUrl = `/customer`;
 export function register(form, callback, error) {
-  server.post(`${baseUrl}/register`, form, callback, error);
+  server.post(`${baseUrl}/register`, form, response => {
+    server.storeToken(response.token)
+    callback(response.user)
+  }, error);
 }
 
 export function get(query, callback, error) {

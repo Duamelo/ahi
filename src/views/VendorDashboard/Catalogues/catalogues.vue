@@ -30,8 +30,8 @@ import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
 import Products from "../../../components/Dashboard/Catalogues/products.vue";
 import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
-// import { get } from "../../../api/category";
-import { get } from "../../../api/mock/category";
+import { get } from "../../../api/category";
+// import { get } from "../../../api/mock/category";
 // import { get } from "../../../api/mock/error/category";
 import { computed, ref } from "vue";
 

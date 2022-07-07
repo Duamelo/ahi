@@ -11,7 +11,9 @@
           profile="/src/assets/profile.jpg"
           v-model:show_sidebar="show_sidebar"
         />
-        <router-view />
+        <div class="content">
+          <router-view />
+        </div>
       </div>
     </div>
   </div>
@@ -26,19 +28,15 @@ var show_sidebar = ref(false)
 </script>
 
 <style>
-/* Laptop */
- @media (min-width: 1440px) {
-
+/* X1 && Laptop */
+ @media (min-width: 870x) {
  }
-/* Tablet */
- @media (min-width: 768px) {
-
+/* Tablet && mobile*/
+ @media (max-width: 870px) {
+  .content{
+    margin-top: 48px;
+  }
  }
-/* Mobile */
- @media (max-width: 350px) {
-
- }
-
 
 .vendor-dashboard {
   min-height: 100vh;

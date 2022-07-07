@@ -15,6 +15,7 @@
         </router-link>
       </div>
     </template>
+    <empty v-if="values.length == 0"/>
     <div class="mt-7 scrollable">
       <div v-for="(product, index) in values" :key="index">
         <div class="line">
@@ -62,9 +63,10 @@ import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
 import Pagination from "../../../components/Dashboard/Pagination.vue";
 import { TrashIcon, PencilIcon } from "@heroicons/vue/outline";
 import { computed, ref } from "vue";
-// import { get } from "../../../api/product";
-import { get,remove } from "../../../api/mock/product";
+import { get } from "../../../api/product";
+// import { get,remove } from "../../../api/mock/product";
 // import { get } from "../../../api/mock/error/product";
+import Empty from "../../../components/Dashboard/Empty.vue";
 
 const expand = ref(false);
 const limits = [10, 25, 50, 100];

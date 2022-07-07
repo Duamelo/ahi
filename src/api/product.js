@@ -1,6 +1,6 @@
 import { server } from ".";
 
-const baseUrl = `${server.url}/product/`;
+const baseUrl = `/products`;
 export function create(form, callback, error) {
   server.post(`${baseUrl}/create`, form, callback, error);
 }
