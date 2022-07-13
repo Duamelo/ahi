@@ -37,12 +37,14 @@
               class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
               type="text"
               name="email"
+              v-model="email"
               placeholder="Adresse mail"
             />
             <input
               class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
               type="password"
               name="password"
+              v-model="password"
               placeholder="Mot de passe"
             />
             <router-link
@@ -62,8 +64,10 @@
                 Se souvenir de moi
               </div>
             </div>
+          <alert v-model:show="show" v-if="show" :error="error" :message="message"/>
             <button
               class="w-3/5 bg-blue-900 text-white text-xl text-center font-semibold rounded py-2.5 mx-auto"
+              @click="login"
             >
               Connexion
             </button>
@@ -131,8 +135,31 @@
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Alert from "@/components/Dashboard/Alert.vue";
+import { login } from "@/api/authentication.js";
 export default {
+  data: () => ({
+    email:"",
+    password: "",
+    show:false,
+    error:false,
+    message: "",
+  }),
+  methods:{
+      login(){
+      login(this.$data,user => {
+          this.show = true
+          this.error = false
+          this.message = "Authentification réussi"
+      },error => {
+          this.show = true
+          this.error = true
+          this.message = error.message
+      })
+    }
+  },
   components: {
+    Alert,
     Footer
   }
 }

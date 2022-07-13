@@ -5,7 +5,8 @@ import Register from "../views/Register.vue";
 import Products from "../views/Products.vue";
 import BlogPost from "../views/BlogPost.vue";
 import Category from "../views/Category.vue";
-import VendorDashboard from "../views/VendorDashboard.vue";
+import VendorDashboard from "../views/VendorDashboard/index.vue";
+import DashboardChildren from "../views/VendorDashboard/routes.js"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,7 @@ const router = createRouter({
       path: "/dashboard",
       name: "dashboard",
       component: VendorDashboard,
+      children:DashboardChildren
     },
     {
       path: "/register",
