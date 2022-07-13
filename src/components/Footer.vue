@@ -66,7 +66,7 @@
       </div>
     </div>
     <div
-      class="flex flex-row w-full md:w-1/3 items-center text-center mx-3 md:mx-auto gap-8"
+      class="flex flex-row items-center justify-center text-center mx-auto gap-8"
     >
       <div class="text-white font-semibold">Marketplace 2022</div>
       <div class="w-px h-6 bg-gray-200"></div>

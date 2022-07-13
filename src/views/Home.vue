@@ -73,7 +73,8 @@
               Parce que votre temps est un précieux pour nous ...
             </div>
           </div>
-          <button
+          <router-link
+            to="/category"
             class="flex items-center bg-white hover:bg-gray-200 shadow-lg rounded-xl px-4"
           >
             <img
@@ -81,10 +82,11 @@
               src="@/assets/icons/ic_menu.svg"
               alt="Icône - menu"
             />
-          </button>
+          </router-link>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 w-11/12 gap-x-16 gap-y-4">
-          <button
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -93,8 +95,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Produits alimentaires</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -103,8 +106,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">'Vêtements et lingerie</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -113,8 +117,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Téléphones & accessoires</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -123,8 +128,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Huileries & Epices</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -133,8 +139,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Lessive et accesoires</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -143,8 +150,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">TVs & Enceintes</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -153,8 +161,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Produits du terroir</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -163,8 +172,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Hygiène & Beauté</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -173,8 +183,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Sportifs du dimanche</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -183,8 +194,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Cuisine et ustensiles</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -193,8 +205,9 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Boissons & alcools</span>
-          </button>
-          <button
+          </router-link>
+          <router-link
+            to="/category"
             class="flex w-auto gap-3 items-center bg-white hover:bg-gray-100 shadow-lg rounded-xl p-3 md:px-8 md:py-3"
           >
             <img
@@ -203,7 +216,7 @@
               alt="Icône - Catégories"
             />
             <span class="font-medium">Meubles & Arts</span>
-          </button>
+          </router-link>
         </div>
       </div>
       <div

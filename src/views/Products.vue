@@ -2,9 +2,7 @@
   <div class="product flex flex-col w-full overflow-x-auto bg-no-repeat">
     <Header class="bg-white w-full"></Header>
 
-    <div
-      class="flex flex-col gap-12 w-auto md:w-11/12 items-center mx-auto my-10"
-    >
+    <div class="flex flex-col gap-12 w-auto md:w-11/12 items-center mx-5 my-10">
       <div class="flex flex-col gap-10 w-auto mx-2 md:mx-0">
         <span class="text-2xl text-black font-bold">
           {{ product.name }}
