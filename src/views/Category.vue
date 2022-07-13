@@ -3,13 +3,15 @@
     <Header class="bg-white w-full"></Header>
     <!-- <h1>This is a category page</h1> -->
     <div
-      class="flex flex-col gap-12 w-11/12 2xl:w-3/4 items-center mx-auto my-16"
+      class="flex flex-col gap-12 w-11/12 2xl:w-3/4 items-center mx-auto my-10 md:my-16"
     >
-      <div class="flex flex-row gap-10 w-full">
-        <div class="flex flex-col gap-3 w-1/4">
-          <div class="flex gap-4 bg-white w-full rounded-lg pl-10 py-3">
+      <div class="flex flex-col md:flex-row gap-10 w-full">
+        <div class="grid grid-cols-2 md:flex md:flex-col gap-3 md:w-1/4">
+          <div
+            class="col-span-1 flex gap-4 bg-white w-full rounded-lg p-2 md:pl-10 md:py-3"
+          >
             <div
-              class="flex bg-gray-200 font-bold items-center rounded-lg px-2"
+              class="flex h-10 md:h-auto bg-gray-200 font-bold items-center rounded-lg px-2"
             >
               0
             </div>
@@ -18,7 +20,7 @@
             </span>
           </div>
           <div
-            class="flex flex-col gap-2 bg-white w-full rounded-lg pl-10 py-3"
+            class="col-span-1 flex flex-col gap-2 bg-white w-full rounded-lg p-2 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">Tri selon</h3>
             <div class="flex items-center font-bold gap-2">
@@ -35,7 +37,7 @@
             </div>
           </div>
           <div
-            class="flex gap-16 bg-white w-full items-center rounded-lg pl-10 py-3"
+            class="col-span-1 flex gap-16 bg-white w-full items-center rounded-lg p-3 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">
               Livraison gratuite
@@ -43,11 +45,11 @@
             <input type="checkbox" name="livraison" />
           </div>
           <div
-            class="flex flex-col gap-2 bg-white w-full rounded-lg pl-10 py-3"
+            class="col-span-1 flex flex-col gap-2 bg-white w-full rounded-lg p-3 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">Prix</h3>
-            <div class="flex gap-3">
-              <div class="flex flex-col w-2/5 bg-gray-200 px-2 rounded-lg">
+            <div class="flex flex-col md:flex-row gap-4 mdgap-3">
+              <div class="flex flex-col md:w-2/5 bg-gray-200 px-2 rounded-lg">
                 <span class="font-medium text-sm">Minimum</span>
                 <input
                   class="w-full font-medium bg-gray-200"
@@ -56,7 +58,7 @@
                   name="minPrice"
                 />
               </div>
-              <div class="flex flex-col w-2/5 bg-gray-200 px-2 rounded-lg">
+              <div class="flex flex-col md:w-2/5 bg-gray-200 px-2 rounded-lg">
                 <span class="font-medium text-sm">Maximum</span>
                 <input
                   class="w-full font-medium bg-gray-200"
@@ -68,50 +70,58 @@
             </div>
           </div>
           <div
-            class="flex flex-col gap-3 bg-white w-full rounded-lg pl-10 py-3"
+            class="col-span-1 flex flex-col gap-3 bg-white w-full rounded-lg p-3 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">Notes</h3>
             <div class="flex flex-col gap-3">
               <div class="flex flex-row gap-3 items-center">
                 <input type="checkbox" name="note1" />
-                <div class="flex flex-row gap-1">
-                  <img
-                    v-for="i in 3"
-                    :key="i"
-                    src="@/assets/icons/ic_star_yellow.svg"
-                    alt="Icône - Star"
-                  />
-                  <img
-                    v-for="i in 2"
-                    :key="i"
-                    src="@/assets/icons/ic_star_white.svg"
-                    alt="Icône - Star 2"
-                  />
+                <div class="flex flex-col gap-1 xl:flex-row">
+                  <div class="flex flex-row gap-1">
+                    <img
+                      class="w-1/5"
+                      v-for="i in 3"
+                      :key="i"
+                      src="@/assets/icons/ic_star_yellow.svg"
+                      alt="Icône - Star"
+                    />
+                    <img
+                      class="w-1/5"
+                      v-for="i in 2"
+                      :key="i"
+                      src="@/assets/icons/ic_star_white.svg"
+                      alt="Icône - Star 2"
+                    />
+                  </div>
+                  <span class="font-medium pl-0 xl:pl-5">3 et plus</span>
                 </div>
-                <span class="font-medium">3 et plus</span>
               </div>
               <div class="flex flex-row gap-3 items-center">
                 <input type="checkbox" name="note2" />
-                <div class="flex flex-row gap-1">
-                  <img
-                    v-for="i in 4"
-                    :key="i"
-                    src="@/assets/icons/ic_star_yellow.svg"
-                    alt="Icône - Star"
-                  />
-                  <img
-                    v-for="i in 1"
-                    :key="i"
-                    src="@/assets/icons/ic_star_white.svg"
-                    alt="Icône - Star 2"
-                  />
+                <div class="flex flex-col gap-1 xl:flex-row">
+                  <div class="flex flex-row gap-1">
+                    <img
+                      class="w-1/5"
+                      v-for="i in 4"
+                      :key="i"
+                      src="@/assets/icons/ic_star_yellow.svg"
+                      alt="Icône - Star"
+                    />
+                    <img
+                      class="w-1/5"
+                      v-for="i in 1"
+                      :key="i"
+                      src="@/assets/icons/ic_star_white.svg"
+                      alt="Icône - Star 2"
+                    />
+                  </div>
+                  <span class="font-medium pl-0 xl:pl-5">4 et plus</span>
                 </div>
-                <span class="font-medium">4 et plus</span>
               </div>
             </div>
           </div>
           <div
-            class="flex flex-col gap-3 bg-white w-full rounded-lg pl-10 py-3"
+            class="col-span-1 flex flex-col gap-3 bg-white w-full rounded-lg p-3 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">Marques</h3>
             <div class="flex flex-col gap-1">
@@ -126,7 +136,7 @@
             </div>
           </div>
           <div
-            class="flex flex-col gap-3 bg-white w-full rounded-lg pl-10 py-3"
+            class="col-span-1 flex flex-col gap-3 bg-white w-full rounded-lg p-3 md:pl-10 md:py-3"
           >
             <h3 class="font-semibold text-xl text-blue-900">Disponibilité</h3>
             <div class="flex flex-col gap-1">
@@ -141,9 +151,15 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-col gap-8 w-3/4">
-          <h1 class="text-2xl font-bold">Commençons avec cette sélection</h1>
-          <div class="grid grid-cols-3 gap-4 w-full pl-10 py-3">
+        <div
+          class="flex flex-col gap-8 w-full md:w-3/4 items-center md:items-start"
+        >
+          <h1 class="text-xl md:text-2xl font-bold mx-3 md:mx-0">
+            Commençons avec cette sélection
+          </h1>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 w-full pl-10 py-3"
+          >
             <ArticleCard
               v-for="i in 9"
               :key="i"
@@ -199,7 +215,7 @@ export default {
         "11th Gen Intel® Core™ i7-  NVIDIA® GeForce® MX350- M.2 PCle SSD- 24 GB RAM- 17-inch FHD (1920 x 1080)",
       ],
       nbrEtoiles: [4, 3, 5, 3, 4, 3, 3, 5, 3],
-      nbrAvis: [100, 99, 10, 29, 30, 109, 80, 95, 99]
+      nbrAvis: [100, 99, 10, 29, 30, 109, 80, 95, 99],
     };
   },
   components: {

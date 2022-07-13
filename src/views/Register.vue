@@ -3,7 +3,9 @@
     <Header class="bg-white w-full"></Header>
 
     <div class="flex flex-col gap-12 w-5/6 2xl:w-3/4 mx-auto my-10">
-      <div class="flex flex-col gap-2 w-1/2 text-black text-center mx-auto">
+      <div
+        class="flex flex-col gap-2 w-3/4 md:w-1/2 text-black text-center mx-auto"
+      >
         <span class="text-2xl 2xl:text-3xl font-bold">
           Finalisons votre authentification
         </span>
@@ -11,7 +13,7 @@
           Merci de renseigner avec exactitude vos infomartions..
         </span>
       </div>
-      <div class="grid grid-cols-2 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div
           class="col-span-1 flex flex-col gap-10 bg-white rounded shadow-lg p-10"
         >

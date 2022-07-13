@@ -1,11 +1,11 @@
 <template>
-  <div class="product flex flex-col w-full">
+  <div class="product flex flex-col w-full overflow-x-auto bg-no-repeat">
     <Header class="bg-white w-full"></Header>
 
-    <div class="flex flex-col gap-12 w-11/12 items-center mx-auto my-10">
-      <div class="flex flex-col gap-10">
+    <div class="flex flex-col gap-12 w-auto md:w-11/12 items-center mx-5 my-10">
+      <div class="flex flex-col gap-10 w-auto mx-2 md:mx-0">
         <span class="text-2xl text-black font-bold">
-          Sac à dos avec port USB - Noir
+          {{ product.name }}
         </span>
         <div class="flex flex-row items-center gap-2">
           <button class="text-sm text-black font-medium">
@@ -23,8 +23,8 @@
           </div>
           <div class="text-sm">sur <span>42</span> avis</div>
         </div>
-        <div class="flex flex-row gap-5">
-          <div class="flex flex-col gap-4">
+        <div class="flex flex-col md:flex-row gap-5">
+          <div class="flex md:flex-col gap-4">
             <button>
               <img src="@/assets/images/img_bag_1.png" alt="Image - Bag 1" />
             </button>
@@ -42,7 +42,7 @@
               <span class="text-blue-900 font-semibold">Share</span>
             </button>
           </div>
-          <div class="h-full">
+          <div class="w-auto h-full">
             <img
               class="h-full"
               src="@/assets/images/img_bag.png"
@@ -54,7 +54,9 @@
               <div
                 class="flex flex-col w-1/3 text-white text-center items-center p-3 border-r-8 border-dotted"
               >
-                <span class="w-full text-3xl text-center font-bold">15 %</span>
+                <span class="w-full text-3xl text-center font-bold">
+                  {{ product.pourcentagePromo }} %
+                </span>
                 OFFERT
               </div>
               <div class="flex flex-col w-3/4 gap-2 p-3">
@@ -63,7 +65,7 @@
                   <div
                     class="flex bg-white text-black text-center font-bold items-center rounded-full p-1"
                   >
-                    HDJXG511
+                    {{ product.codePromo }}
                   </div>
                 </div>
                 <div class="flex flex-row gap-6 text-white">
@@ -76,11 +78,11 @@
               <div class="flex flex-col gap-3 w-11/12 mx-auto my-2">
                 <div class="flex flex-row justify-between text-black">
                   <div class="flex flex-col">
-                    <div class="text-xl font-bold">7,250 FCFA</div>
-                    <div class="line-through">13,000 FCFA</div>
+                    <div class="text-xl font-bold">{{ product.prixPromo }}</div>
+                    <div class="line-through">{{ product.prix }}</div>
                   </div>
                   <div class="flex flex-row h-8 gap-2 my-auto">
-                    <button class="shadow-md rounded-md px-2">
+                    <button class="shadow-md rounded-md px-2" @click="prev">
                       <img
                         src="@/assets/icons/ic_back_2.svg"
                         alt="Icône - Back"
@@ -89,9 +91,9 @@
                     <button
                       class="text-black text-xl font-bold shadow-md rounded-md px-2"
                     >
-                      1
+                      {{ this.nProduct }}
                     </button>
-                    <button class="shadow-md rounded-md px-2">
+                    <button class="shadow-md rounded-md px-2" @click="next">
                       <img
                         src="@/assets/icons/ic_next.svg"
                         alt="Icône - Next"
@@ -166,8 +168,10 @@
         <div class="text-green-300 text-xl font-bold text-left underline">
           Signaler des problèmes survenues avec le produit
         </div>
-        <div class="flex flex-row shadow-lg justify-between p-3">
-          <div class="flex flex-col gap-3 w-1/5 font-bold">
+        <div
+          class="flex flex-col gap-3 md:flex-row shadow-lg justify-between p-3"
+        >
+          <div class="flex flex-col gap-3 w-full md:w-1/5 font-bold">
             Vendu par :
             <div class="flex flex-row gap-4 items-center">
               <div class="w-7 h-7 rounded-full bg-red-500"></div>
@@ -175,16 +179,18 @@
             </div>
           </div>
           <button
-            class="flex gap-3 items-center justify-center bg-green-300 text-white text-xl text-center font-medium rounded-lg px-5"
+            class="flex w-4/5 md:w-auto gap-3 items-center justify-center bg-green-300 text-white text-xl text-center font-medium rounded-lg px-5"
           >
             Accéder à sa boutique
           </button>
         </div>
         <div class="flex flex-col gap-5 mt-10">
-          <div class="text-2xl text-black font-bold">
+          <div
+            class="w-3/4 md:w-auto text-2xl text-black font-bold mx-auto md:mx-0"
+          >
             Ceci pourrait vous intéresser
           </div>
-          <div class="flex flex-row w-full gap-10">
+          <div class="flex flex-col md:flex-row w-full gap-10">
             <Article v-for="i in 4" :key="i"></Article>
           </div>
         </div>
@@ -192,10 +198,12 @@
           <DetailsArticle></DetailsArticle>
         </div>
         <div class="flex flex-col gap-5 mt-10">
-          <div class="text-2xl text-black font-bold">
+          <div
+            class="w-3/4 md:w-auto text-2xl text-black font-bold mx-auto md:mx-0"
+          >
             Retrouvez de nouveaux produits ...
           </div>
-          <div class="flex flex-row w-full gap-10">
+          <div class="flex flex-col md:flex-row w-full gap-10">
             <Article v-for="i in 4" :key="i"></Article>
           </div>
         </div>
@@ -212,21 +220,43 @@ import Footer from "@/components/Footer.vue";
 import Article from "@/components/Article.vue";
 import DetailsArticle from "@/components/DetailsArticle.vue";
 export default {
+  data() {
+    return {
+      nProduct: 1,
+      product: {
+        name: "Sac à dos avec port USB - Noir",
+        pourcentagePromo: 15,
+        codePromo: "HDJXG511",
+        prix: "13,000 FCFA",
+        prixPromo: "7,250 FCFA",
+      },
+    }
+  },
   components: {
     Header,
     Footer,
     Article,
     DetailsArticle
   },
+  methods: {
+    prev() {
+      if (this.nProduct > 1) {
+        this.nProduct--;
+      }
+    },
+    next() {
+      this.nProduct++;
+    }
+  }
 };
 </script>
 
 <style>
 @media (min-width: 1024px) {
-  .product {
+  /* .product {
     min-height: 100vh;
     display: flex;
     align-items: center;
-  }
+  } */
 }
 </style>
