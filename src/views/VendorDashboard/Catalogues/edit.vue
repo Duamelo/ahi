@@ -4,33 +4,30 @@
     <path-item href="/dashboard/catalogues">Catalogues</path-item>
     <path-item :active="true"> {{ $route.params.id }}</path-item>
   </path-view>
+  <alert v-model:show="show" v-if="show" :error="error" :message="message"/>
   <dashboard-card>
     <template #title> Changer un Catalogue </template>
     <template #left>
-      <button class="button-outlined" @click="save()"> Sauvegarder </button>
+      <button class="button-outlined" @click="save()">Sauvegarder</button>
     </template>
     <form>
       <div class="row">
         <div class="col">
           <div class="flex items-center mb-6">
             <div class="mr-16">
-              <label>
-                Nom
-              </label>
+              <label> Nom </label>
             </div>
             <div>
               <input
                 type="text"
                 placeholder="Ma collection"
-                v-model="item.nom"
+                v-model="item.name"
               />
             </div>
           </div>
           <div class="flex items-center mb-6">
             <div>
-              <label>
-                Description
-              </label>
+              <label> Description </label>
             </div>
             <div class="w-100">
               <textarea
@@ -45,16 +42,15 @@
           <div class="flex justify-center">
             <div class="mb-3 w-96">
               <div class="mb-4 flex justify-around">
-                  <img :src="item.image" class="max-w-full h-auto rounded-full" />
-                </div>
+                <img :src="item.image" class="max-w-full h-auto rounded-full" />
+              </div>
               <label
                 for="formFileLg"
                 class="form-label inline-block mb-2 text-gray-700"
                 >Changer l'image</label
               >
               <input
-                
-                @change="(e)=>item.image = e.target.value"
+                @change="(e) => (item.image = e.target.value)"
                 id="formFileLg"
                 type="file"
               />
@@ -65,21 +61,60 @@
     </form>
   </dashboard-card>
 </template>
+<script>
+
+export default {
+  setup(){
+  get(
+    this.$router.params.id,
+    (value) => {
+      item.value = value;
+    },
+   _error => {
+      show.value = true;
+      error.value = true;
+        message.value = _error.message;
+    }
+  );
+  }
+}
+</script>
 
 <script setup>
 import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
 import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
-import { ref } from '@vue/reactivity';
-const item = ref({
-  nom: "Lorem",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi voluptas minima fuga suscipit aut ex obcaecati voluptatem ipsa rem facilis odit consequuntur animi cumque voluptatum, esse atque saepe ea officia.",
-  image: "https://picsum.photos/seed/picsum/200/200",
-})
+import { ref } from "@vue/reactivity";
+import Alert from "../../../components/Dashboard/Alert.vue";
+import { get,put } from "../../../api/category";
+// import { get, put } from "../../../api/mock/category";
+// import { get,put } from "../../../api/mock/error/category";
+import { useRoute } from 'vue-router'
+const show = ref(false);
+const error = ref(false);
+const message = ref("");
+const router = useRoute()
+const id = Number(router.params.id)
+const item = ref({});
+get(id,(value) => {
+  return (item.value=value);
+});
 
-function save(){
-  console.log(item.value);
+function save() {
+  put(
+    id,
+    item,
+    (item) => {
+      show.value = true;
+      error.value = false;
+      message.value = "Catalogue mise a jour";
+    },
+   _error => {
+      show.value = true;
+      error.value = true;
+        message.value = _error.message;
+    }
+  );
 }
 </script>
 

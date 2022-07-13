@@ -26,12 +26,14 @@
               type="text"
               name="nom"
               placeholder="Nom"
+              v-model="firstName"
             />
             <input
               class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
               type="text"
               name="prenoms"
               placeholder="Prénoms"
+              v-model="lastName"
             />
             <input
               class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
@@ -44,6 +46,7 @@
               type="text"
               name="lieuResidence"
               placeholder="Lieu de résidence"
+              v-model="address"
             />
             <input
               class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
@@ -81,9 +84,11 @@
               placeholder="Code 2PA"
             />
           </div>
+          <alert v-model:show="show" v-if="show" :error="error" :message="message"/>
           <div class="flex flex-row-reverse px-4">
             <button
               class="bg-blue-900 text-white text-xl text-center font-semibold rounded py-2.5 px-4"
+              @click="submit"
             >
               Création de compte
             </button>
@@ -99,10 +104,39 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Alert from "@/components/Dashboard/Alert.vue";
+
+import { register } from "@/api/customer.js";
 export default {
+  data: () => ({
+    firstName:"",
+    lastName:"",
+    address:"",
+    email:"ruchdaneabiodun@gmail.com",
+    phone:"62158899",
+    show:false,
+    error:false,
+    message: "",
+    password: "this is not a password"
+  }),
+  methods:{
+    submit(){
+      register(this.$data,user => {
+          this.show = true
+          this.error = false
+          this.message = "Votre compte a été créer"
+      },error => {
+          this.show = true
+          this.error = true
+          this.message = error.message
+      }
+      )
+    }
+  },
   components: {
     Header,
     Footer,
+    Alert,
   },
 };
 </script>

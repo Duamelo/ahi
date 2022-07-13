@@ -4,6 +4,7 @@
     <path-item href="/dashboard/catalogues">Catalogues</path-item>
     <path-item :active="true"> Nouveau catalogue</path-item>
   </path-view>
+  <alert v-model:show="show" v-if="show" :error="error" :message="message"/>
   <dashboard-card>
     <template #title> Creer un Catalogue </template>
     <template #left>
@@ -56,6 +57,13 @@ import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
 import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
 import { ref } from "@vue/reactivity";
+import Alert from "../../../components/Dashboard/Alert.vue";
+const show = ref(false);
+const error = ref(false);
+const message = ref("");
+import { create } from "../../../api/category";
+// import { create } from "../../../api/mock/category";
+// import { create } from "../../../api/mock/error/category";
 const item = ref({
   name: "",
   description: "",
@@ -63,7 +71,15 @@ const item = ref({
 });
 
 function save() {
-  console.log(item.value);
+  create(item.value,item => {
+  show.value = true
+  error.value = false
+  message.value = "Catalogue crée"
+},_error => {
+  show.value = true
+  error.value = true
+    message.value = _error.message
+})
 }
 </script>
 
