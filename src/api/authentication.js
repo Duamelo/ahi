@@ -20,10 +20,7 @@ export function login(form, callback, error,remember_me = false) {
   }
   fetch(`${server.url}/authentication/login`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(form_data),
+    body: form_data,
   })
   .then((response) => {
     if (!response.ok) {

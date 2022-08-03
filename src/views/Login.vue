@@ -25,30 +25,73 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div
-          class="col-span-1 flex flex-col gap-10 bg-white rounded shadow-lg p-10"
+          class="
+            col-span-1
+            flex flex-col
+            gap-10
+            bg-white
+            rounded
+            shadow-lg
+            p-10
+          "
         >
           <span
-            class="flex w-1/2 text-black text-xl 2xl:text-3xl text-center font-semibold mx-auto"
+            class="
+              flex
+              w-1/2
+              text-black text-xl
+              2xl:text-3xl
+              text-center
+              font-semibold
+              mx-auto
+            "
           >
             Un fervent client ?
           </span>
           <div class="flex flex-col gap-6">
             <input
-              class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
+              class="
+                w-11/12
+                text-xl
+                2xl:text-3xl
+                rounded
+                border
+                py-2
+                px-5
+                mx-auto
+              "
               type="text"
               name="email"
               v-model="email"
               placeholder="Adresse mail"
             />
             <input
-              class="w-11/12 text-xl 2xl:text-3xl rounded border py-2 px-5 mx-auto"
+              class="
+                w-11/12
+                text-xl
+                2xl:text-3xl
+                rounded
+                border
+                py-2
+                px-5
+                mx-auto
+              "
               type="password"
               name="password"
               v-model="password"
               placeholder="Mot de passe"
             />
             <router-link
-              class="w-1/2 underline text-lg 2xl:text-2xl text-center font-medium ahi-green mx-auto"
+              class="
+                w-1/2
+                underline
+                text-lg
+                2xl:text-2xl
+                text-center
+                font-medium
+                ahi-green
+                mx-auto
+              "
               to=""
             >
               Mot de passe oublié ?
@@ -64,16 +107,29 @@
                 Se souvenir de moi
               </div>
             </div>
-          <alert v-model:show="show" v-if="show" :error="error" :message="message"/>
+            <alert
+              v-model:show="show"
+              v-if="show"
+              :error="error"
+              :message="message"
+            />
             <button
-              class="w-3/5 bg-blue-900 text-white text-xl text-center font-semibold rounded py-2.5 mx-auto"
+              class="w-3/5 button-full font-semibold mx-auto"
               @click="login"
             >
               Connexion
             </button>
           </div>
           <router-link
-            class="w-1/2 text-lg 2xl:text-3xl text-center font-medium ahi-green mx-auto"
+            class="
+              w-1/2
+              text-lg
+              2xl:text-3xl
+              text-center
+              font-medium
+              ahi-green
+              mx-auto
+            "
             to=""
           >
             Plutôt un vendeur ?
@@ -106,7 +162,7 @@
               alt="Image - Création de compte"
             />
             <button
-              class="w-3/5 bg-blue-900 text-white text-xl text-center font-semibold rounded py-2.5 mx-auto"
+              class="w-3/5 button-full font-semibold py-2.5 mx-auto"
               @click="$router.push('/register')"
             >
               Créer un compte
@@ -120,7 +176,15 @@
               compte...
             </div>
             <button
-              class="w-3/5 md:w-1/5 bg-blue-900 text-white text-xl text-center font-semibold rounded-lg py-2.5 mx-auto"
+              class="
+                w-3/5
+                md:w-1/5
+                button-full
+                text-center
+                font-bold
+                py-2.5
+                mx-auto
+              "
             >
               Google
             </button>
@@ -139,30 +203,34 @@ import Alert from "@/components/Dashboard/Alert.vue";
 import { login } from "@/api/authentication.js";
 export default {
   data: () => ({
-    email:"",
+    email: "",
     password: "",
-    show:false,
-    error:false,
+    show: false,
+    error: false,
     message: "",
   }),
-  methods:{
-      login(){
-      login(this.$data,user => {
-          this.show = true
-          this.error = false
-          this.message = "Authentification réussi"
-      },error => {
-          this.show = true
-          this.error = true
-          this.message = error.message
-      })
-    }
+  methods: {
+    login() {
+      login(
+        this.$data,
+        (user) => {
+          this.show = true;
+          this.error = false;
+          this.message = "Authentification réussi";
+        },
+        (error) => {
+          this.show = true;
+          this.error = true;
+          this.message = error.message;
+        }
+      );
+    },
   },
   components: {
     Alert,
-    Footer
-  }
-}
+    Footer,
+  },
+};
 </script>
 <style>
 @media (min-width: 1024px) {
@@ -175,5 +243,4 @@ export default {
 .ahi-green {
   color: #29b9ad;
 }
-
 </style>

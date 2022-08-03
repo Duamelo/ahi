@@ -20,9 +20,9 @@
 
 <script>
 export default {
+  props: ["size", "index", "limit"],
   data() {
     return {
-      index: 0,
       slides: [],
       direction: null,
     };
@@ -36,39 +36,34 @@ export default {
   },
   computed: {
     slidesCount() {
-      return this.slides.length;
+      return Math.floor(this.size / this.limit);
     },
   },
   methods: {
+    setIndex(value) {
+      this.$emit("update:index", value);
+    },
     next() {
-      this.index++;
+      this.setIndex(this.index + 1);
       this.direction = "right";
       if (this.index >= this.slidesCount) {
-        this.index = 0;
+        this.setIndex(0);
       }
     },
     prev() {
-      this.index--;
+      this.setIndex(this.index - 1);
       this.direction = "left";
       if (this.index < 0) {
-        this.index = this.slidesCount - 1;
+        this.setIndex(this.slidesCount - 1);
       }
     },
     goto(index) {
       this.direction = index > this.index ? "right" : "left";
-      this.index = index;
+      this.setIndex(index);
     },
   },
   mounted() {
-    this.slides = this.$slots.default()[0].children;
-    console.log(this.$slots.default()[0].children);
-
     setInterval(this.next, 10000);
-    /*
-        this.slides.forEach((slide, i) => {
-            slide.index = i
-        })
-        */
   },
 };
 </script>
