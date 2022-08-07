@@ -1,34 +1,57 @@
 <template>
-  <div
-    class="flex flex-col gap-10 w-4/5 md:w-1/4 bg-white shadow-xl rounded-xl py-10 mx-auto md:mx-0"
-  >
-    <router-link class="flex flex-col" to="/products">
-      <img
-        class="flex w-full"
-        src="@/assets/images/img_article.png"
-        alt="Image - Article"
-      />
-      <div class="flex flex-col gap-2 mx-4">
-        <div class="text-base font-medium">
-          KIPSTA by decathlon BALLON DE FOOTBALL F100
-        </div>
-        <div class="flex md:flex-col xl:flex-row justify-between">
-          <div class="flex flex-row w-3/4 gap-2">
-            <img
-              v-for="i in 5"
-              :key="i"
-              src="@/assets/icons/ic_star.svg"
-              alt="Icône - Etoile"
-            />
-          </div>
-          <span class="text-xl font-medium">(10)</span>
-        </div>
-        <div class="font-bold">3,850 FCFA</div>
+  <router-link class="article" to="/category">
+    <img class="thumb" src="@/assets/images/img_article.png" alt="Article" />
+
+    <div class="info">
+      <div class="text-base font-medium">
+        {{ article.name }}
       </div>
-    </router-link>
-  </div>
+      <div class="flex md:flex-col xl:flex-row justify-between">
+        <div class="flex flex-row w-3/4 gap-2">
+          <img
+            v-for="i in article.note"
+            :key="i"
+            src="@/assets/icons/ic_star.svg"
+            alt="check"
+          />
+          <img
+            class="w-1/5"
+            v-for="i in 5 - article.note"
+            :key="i"
+            src="@/assets/icons/ic_star_white.svg"
+            alt="uncheck"
+          />
+        </div>
+        <span class="text-xl font-medium">({{ article.review }})</span>
+      </div>
+      <div class="font-bold">{{ article.price }} FCFA</div>
+    </div>
+  </router-link>
 </template>
 
 <script>
-export default {};
+export default {
+  // props: ["note", "price", "review", "name", "src"],
+  props: ["article"],
+};
 </script>
+
+<style scoped>
+.article {
+  display: flex;
+  padding: 28px;
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  border-radius: 0.75rem;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  gap: 2.5rem;
+  box-shadow: 3px 5px 4px rgb(0 0 0 / 50%);
+}
+.article:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+</style>

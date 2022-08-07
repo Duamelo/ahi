@@ -1,8 +1,11 @@
 <template>
   <div class="flex flex-col bg-white rounded-lg">
-    <router-link class="flex flex-col" to="/products">
-      <img src="@/assets/images/img_ordi_1.png" alt="Image - Ordinateur 1" />
-      <!-- <img :src="'https://picsum.photos/200'" alt="Image - Ordinateur 1" /> -->
+    <router-link class="flex flex-col" to="/category">
+      <!-- <img src="@/assets/images/img_ordi_1.png" alt="Image - Ordinateur 1" /> -->
+      <img
+        src="https://loremflickr.com/200/200/laptop"
+        alt="Image - Ordinateur 1"
+      />
       <div class="flex flex-col gap-2 w-4/5 mx-auto mb-3">
         <div class="font-bold">{{ title }}</div>
         <div class="w-full">{{ desc }}</div>

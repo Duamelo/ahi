@@ -16,20 +16,25 @@
           <img src="@/assets/icons/ic_search.svg" alt="Icône - Recherche" />
         </label>
         <input
-          class="w-full justify-center pl-4 py-1.5 bg-gray-100 border rounded-xl"
+          class="
+            w-full
+            justify-center
+            pl-4
+            py-1.5
+            bg-gray-100
+            border
+            rounded-xl
+          "
           name="search"
           type="text"
           placeholder="Rechercher un produit, une marque, une identité"
         />
       </div>
       <div class="flex flex-row gap-5">
-        <button
-          class="text-white bg-blue-900 rounded-lg px-5"
-          @click="$router.push('/login')"
-        >
+        <button class="button-full" @click="$router.push('/login')">
           Connexion
         </button>
-        <button class="text-white bg-blue-900 rounded-lg px-5">Aide ?</button>
+        <button class="button-full">Aide ?</button>
       </div>
     </div>
     <div class="flex flex-row md:hidden w-11/12 justify-between p-4 mx-auto">
@@ -65,7 +70,15 @@
                         />
                       </label>
                       <input
-                        class="w-full justify-center pl-4 py-1.5 bg-gray-100 border rounded-xl"
+                        class="
+                          w-full
+                          justify-center
+                          pl-4
+                          py-1.5
+                          bg-gray-100
+                          border
+                          rounded-xl
+                        "
                         name="search"
                         type="text"
                         placeholder="Rechercher un produit, une marque, une identité"
@@ -92,7 +105,17 @@
     </div>
     <div class="hidden md:flex flex-row w-full border-t border-black px-5 pt-2">
       <button
-        class="flex gap-2 w-full text-center items-center justify-center text-blue-900 font-semibold px-2"
+        class="
+          flex
+          gap-2
+          w-full
+          text-center
+          items-center
+          justify-center
+          text-blue-900
+          font-semibold
+          px-2
+        "
         v-for="i in menu.length"
         :key="i"
         @click="choose(i)"

@@ -1,11 +1,9 @@
 <template>
-  <transition :name="transition">
-    <div v-show="visible">
-      <!-- Index : {{ index }}
-            Visible ? {{ visible }} -->
+  <div class="flex flex-col">
+    <transition :name="transition">
       <slot></slot>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -28,14 +26,11 @@ export default {
         return "";
       }
     },
-    visible() {
-      return this.index === this.$parent.index;
-    },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .slide-right-enter-active {
   animation: slideRightIn 0.5s;
 }
@@ -43,10 +38,16 @@ export default {
 .slide-right-leave-active {
   animation: slideRightOut 0.5s;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+}
+
+.slide-left-enter-active {
+  animation: slideLeftIn 0.5s;
+}
+
+.slide-left-leave-active {
+  animation: slideLeftOut 0.5s;
+  position: absolute;
   width: 100%;
 }
 
@@ -66,20 +67,6 @@ export default {
   to {
     transform: translateX(-100%);
   }
-}
-
-.slide-left-enter-active {
-  animation: slideLeftIn 0.5s;
-}
-
-.slide-left-leave-active {
-  animation: slideLeftOut 0.5s;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
 }
 
 @keyframes slideLeftIn {

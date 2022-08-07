@@ -2,8 +2,11 @@
 <template>
   <div class="vendor-dashboard">
     <div class="row">
-      <div class="blur-bg backdrop-blur-sm nav-lg-none" v-if="show_sidebar">  </div>
-      <menu-view v-model:show="show_sidebar"/>
+      <div
+        class="blur-bg backdrop-blur-sm nav-lg-none"
+        v-if="show_sidebar"
+      ></div>
+      <menu-view v-model:show="show_sidebar" />
       <div class="col">
         <navbar
           nom="John Doe"
@@ -22,21 +25,21 @@
 <script setup>
 import MenuView from "../../components/Dashboard/MenuView.vue";
 import Navbar from "../../components/Dashboard/NavbarView.vue";
-import { ref } from '@vue/reactivity';
+import { ref } from "@vue/reactivity";
 
-var show_sidebar = ref(false) 
+var show_sidebar = ref(false);
 </script>
 
 <style>
 /* X1 && Laptop */
- @media (min-width: 870x) {
- }
+@media (min-width: 870x) {
+}
 /* Tablet && mobile*/
- @media (max-width: 870px) {
-  .content{
+@media (max-width: 870px) {
+  .content {
     margin-top: 48px;
   }
- }
+}
 
 .vendor-dashboard {
   min-height: 100vh;
@@ -49,8 +52,41 @@ var show_sidebar = ref(false)
 }
 
 .vendor-dashboard .scrollable {
-  max-height:60vh;
+  max-height: 60vh;
   overflow-y: auto;
+}
+/* TODO Refactor button class */
+.button-full {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  padding: 0.35rem 0.75rem;
+  border: #1e3c87;
+  border-width: 1px;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  background-color: #1e3c87;
+  color: white;
+  text-decoration: none;
+}
+.button-full:focus {
+  box-shadow: 0 0 0 0.25rem #51669b;
+}
+.button-full:hover {
+  background-color: #08329b;
+}
+.button-full:hover svg {
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color: white;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.button-full svg {
+  color: #1e3c87;
+  height: 33px;
 }
 
 .button-outlined {
@@ -98,7 +134,7 @@ var show_sidebar = ref(false)
   align-items: center;
 }
 .line:hover {
-  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); 
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 }
 
 .vendor-dashboard label {
@@ -154,14 +190,14 @@ var show_sidebar = ref(false)
   border-color: #d1d5db;
   border-style: solid;
 }
-.blur-bg{
+.blur-bg {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   position: fixed;
   z-index: 3;
-  background-color: rgb(0 0 0/.2);
+  background-color: rgb(0 0 0/0.2);
 }
 .vendor-dashboard input[type="file"]:hover {
   background-color: #ffffff;
