@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col bg-white rounded-lg">
-    <router-link class="flex flex-col" to="/category">
+    <router-link class="flex flex-col" to="/products">
       <!-- <img src="@/assets/images/img_ordi_1.png" alt="Image - Ordinateur 1" /> -->
       <img
         src="https://loremflickr.com/200/200/laptop"

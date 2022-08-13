@@ -1,64 +1,15 @@
 <template>
   <div class="category flex flex-col w-full bg-gray-100">
     <Header class="bg-white w-full"></Header>
-    <!-- <h1>This is a category page</h1> -->
-    <div
-      class="
-        flex flex-col
-        gap-12
-        w-11/12
-        2xl:w-3/4
-        items-center
-        mx-auto
-        my-10
-        md:my-16
-      "
-    >
-      <div class="flex flex-col md:flex-row gap-10 w-full">
-        <div class="grid grid-cols-2 md:flex md:flex-col gap-3 md:w-1/4">
-          <div
-            class="
-              col-span-1
-              flex
-              gap-4
-              bg-white
-              w-full
-              rounded-lg
-              p-2
-              md:pl-10 md:py-3
-            "
-          >
-            <!-- <div
-              class="
-                flex
-                h-10
-                md:h-auto
-                bg-gray-200
-                font-bold
-                items-center
-                rounded-lg
-                px-2
-              "
-            >
-              0
-            </div> -->
-            <span class="font-semibold text-xl text-blue-900">
-              Filtres sélectionnés
-            </span>
+    <div class="container">
+      <div class="layout">
+        <div class="filtres">
+          <div class="filtre flex-row items-center">
+            <label class="badge ml-3"> 0 </label>
+            <label class="title"> Filtres sélectionnés </label>
           </div>
-          <div
-            class="
-              col-span-1
-              flex flex-col
-              gap-2
-              bg-white
-              w-full
-              rounded-lg
-              p-2
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">Tri selon</h3>
+          <div class="filtre">
+            <h3 class="title">Tri selon</h3>
             <div class="flex items-center font-bold gap-2">
               <input type="radio" name="tri" /> Pertinence
             </div>
@@ -72,37 +23,12 @@
               <input type="radio" name="tri" /> Meilleures notes
             </div>
           </div>
-          <div
-            class="
-              col-span-1
-              flex
-              gap-16
-              bg-white
-              w-full
-              items-center
-              rounded-lg
-              p-3
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">
-              Livraison gratuite
-            </h3>
+          <div class="filtre flex-row items-center">
+            <h3 class="title">Livraison gratuite</h3>
             <input type="checkbox" name="livraison" />
           </div>
-          <div
-            class="
-              col-span-1
-              flex flex-col
-              gap-2
-              bg-white
-              w-full
-              rounded-lg
-              p-3
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">Prix</h3>
+          <div class="filtre">
+            <h3 class="title">Prix</h3>
             <div class="flex flex-col md:flex-row gap-4 mdgap-3">
               <div class="flex flex-col md:w-2/5 bg-gray-200 px-2 rounded-lg">
                 <span class="font-medium text-sm">Minimum</span>
@@ -124,19 +50,8 @@
               </div>
             </div>
           </div>
-          <div
-            class="
-              col-span-1
-              flex flex-col
-              gap-3
-              bg-white
-              w-full
-              rounded-lg
-              p-3
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">Notes</h3>
+          <div class="filtre">
+            <h3 class="title">Notes</h3>
             <div class="flex flex-col gap-3">
               <div class="flex flex-row gap-3 items-center">
                 <input type="checkbox" name="note1" />
@@ -184,19 +99,8 @@
               </div>
             </div>
           </div>
-          <div
-            class="
-              col-span-1
-              flex flex-col
-              gap-3
-              bg-white
-              w-full
-              rounded-lg
-              p-3
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">Marques</h3>
+          <div class="filtre">
+            <h3 class="title">Marques</h3>
             <div class="flex flex-col gap-1">
               <div
                 v-for="i in marques.length"
@@ -208,19 +112,8 @@
               </div>
             </div>
           </div>
-          <div
-            class="
-              col-span-1
-              flex flex-col
-              gap-3
-              bg-white
-              w-full
-              rounded-lg
-              p-3
-              md:pl-10 md:py-3
-            "
-          >
-            <h3 class="font-semibold text-xl text-blue-900">Disponibilité</h3>
+          <div class="filtre">
+            <h3 class="title">Disponibilité</h3>
             <div class="flex flex-col gap-1">
               <div class="flex flex-row gap-3 items-center">
                 <input type="checkbox" name="localement" />
@@ -233,30 +126,11 @@
             </div>
           </div>
         </div>
-        <div
-          class="
-            flex flex-col
-            gap-8
-            w-full
-            md:w-3/4
-            items-center
-            md:items-start
-          "
-        >
+        <div class="results">
           <h1 class="text-xl md:text-2xl font-bold mx-3 md:mx-0">
             Commençons avec cette sélection
           </h1>
-          <div
-            class="
-              grid grid-cols-1
-              md:grid-cols-2
-              xl:grid-cols-3
-              gap-4
-              w-full
-              pl-10
-              py-3
-            "
-          >
+          <div class="article">
             <ArticleCard
               v-for="i in 9"
               :key="i"
@@ -329,6 +203,105 @@ export default {
     min-height: 100vh;
     display: flex;
     align-items: center;
+  }
+}
+
+.container {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  width: 91.666667%;
+  gap: 3rem;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2.5rem;
+}
+
+.filtres {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.badge {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #c4c4c4;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.title {
+  color: #1e3c87;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.filtre {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 0.5rem;
+  grid-column: span 1 / span 1;
+  gap: 1rem;
+}
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.article {
+  display: grid;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
+  width: 100%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  .layout {
+    flex-direction: row;
+  }
+  .filtres {
+    display: flex;
+    flex-direction: column;
+    width: 29%;
+  }
+  .filtre {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 2.5rem;
+  }
+  .results {
+    align-items: flex-start;
+    width: 75%;
+  }
+  .article {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  .article {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 </style>

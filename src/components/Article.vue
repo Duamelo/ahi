@@ -1,5 +1,7 @@
 <template>
-  <router-link class="article" to="/category">
+  <router-link class="article" to="/products" v-if="article" onclick="{
+    console.log(article);
+  }">
     <img class="thumb" src="@/assets/images/img_article.png" alt="Article" />
 
     <div class="info">
@@ -27,6 +29,7 @@
       <div class="font-bold">{{ article.price }} FCFA</div>
     </div>
   </router-link>
+  <div v-else> Error undefined article </div>
 </template>
 
 <script>
