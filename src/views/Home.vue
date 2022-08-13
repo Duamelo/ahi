@@ -1,15 +1,6 @@
 <template>
   <div
-    class="
-      home
-      flex flex-col
-      items-center
-      w-full
-      overflow-auto
-      bg-no-repeat
-      relative
-      bg-gray-100
-    "
+    class="home flex flex-col items-center w-full overflow-auto bg-no-repeat relative bg-gray-100"
   >
     <Header class="bg-white w-full"></Header>
     <div class="flex flex-col w-full">
@@ -24,13 +15,7 @@
             <div class="w-full bg-blue-900 rounded-xl py-10">
               <div class="flex flex-col gap-10">
                 <div
-                  class="
-                    flex
-                    md:w-auto
-                    text-white text-2xl text-center
-                    font-semibold
-                    mx-auto
-                  "
+                  class="flex md:w-auto text-white text-2xl text-center font-semibold mx-auto"
                 >
                   Jusqu’à 60% de réduction sur de nombreux articles
                 </div>
@@ -49,17 +34,7 @@
         </Carousel>
       </div>
       <div
-        class="
-          flex flex-col
-          gap-4
-          md:gap-10
-          items-center
-          my-1
-          py-10
-          bg-image-background
-          w-full
-          h-auto
-        "
+        class="flex flex-col gap-4 md:gap-10 items-center my-1 py-10 bg-image-background w-full h-auto"
       >
         <div class="flex w-11/12 justify-between">
           <div class="flex flex-col gap-2 w-2/3 md:w-auto">
@@ -88,16 +63,7 @@
         </div>
       </div>
       <div
-        class="
-          flex flex-col
-          gap-10
-          items-center
-          my-16
-          py-10
-          bg-image-background-2
-          w-full
-          h-auto
-        "
+        class="flex flex-col gap-10 items-center my-16 py-10 bg-image-background-2 w-full h-auto"
       >
         <div class="flex w-11/12 justify-between">
           <div class="flex flex-col gap-2">
@@ -140,16 +106,7 @@
         </div>
       </div>
       <div
-        class="
-          flex flex-col
-          gap-10
-          items-center
-          my-1
-          py-10
-          bg-image-background
-          w-full
-          h-auto
-        "
+        class="flex flex-col gap-10 items-center my-1 py-10 bg-image-background w-full h-auto"
       >
         <div class="flex flex-col w-2/3 md:w-auto items-center gap-2 mx-auto">
           <div class="text-xl font-bold">
@@ -160,11 +117,7 @@
           </div>
         </div>
         <div
-          class="
-            grid grid-cols-2
-            gap-5
-            md:flex md:flex-row md:w-10/12 md:justify-between
-          "
+          class="grid grid-cols-2 gap-5 md:flex md:flex-row md:w-10/12 md:justify-between"
         >
           <div class="flex flex-col items-center gap-2">
             <div class="flex justify-center bg-blue-900 rounded-xl p-4">
@@ -193,15 +146,7 @@
         </div>
       </div>
       <div
-        class="
-          relative
-          flex flex-col
-          gap-10
-          items-center
-          my-16
-          bg-blue-500
-          w-full
-        "
+        class="relative flex flex-col gap-10 items-center my-16 bg-blue-500 w-full"
       >
         <img
           class="absolute left-0 bottom-0 ml-32 mb-0 z-0 w-1/3"
@@ -226,35 +171,14 @@
             </div>
             <router-link
               to="/category"
-              class="
-                w-48
-                md:w-64
-                bg-blue-900
-                text-white text-lg
-                md:text-xl
-                hover:bg-blue-400
-                font-semibold
-                rounded-xl
-                z-10
-                p-4
-              "
+              class="w-48 md:w-64 bg-blue-900 text-white text-lg md:text-xl hover:bg-blue-400 font-semibold rounded-xl z-10 p-4"
             >
               Ca se passe ici !!!
             </router-link>
           </div>
         </div>
         <img
-          class="
-            absolute
-            right-0
-            bottom-0
-            mr-14
-            mb-0
-            hidden
-            md:block
-            w-1/3
-            2xl:w-1/5
-          "
+          class="absolute right-0 bottom-0 mr-14 mb-0 hidden md:block w-1/3 2xl:w-1/5"
           src="@/assets/images/man.png"
           alt="Image - Man"
         />
@@ -303,14 +227,7 @@
           <div class="flex flex-row-reverse">
             <router-link
               to="/blogpost"
-              class="
-                bg-blue-900
-                hover:bg-blue-400
-                rounded-lg
-                text-white
-                px-6
-                py-3
-              "
+              class="bg-blue-900 hover:bg-blue-400 rounded-lg text-white px-6 py-3"
             >
               Découvrer nos articles
             </router-link>
@@ -335,13 +252,32 @@ import { MenuIcon } from "@heroicons/vue/outline";
 import Category from "../components/home/category.vue";
 import BlogPostThumb from "../components/home/BlogPostThumb.vue";
 export default {
+  mounted(){
+    addEventListener('resize', this.updateLimit);
+  },
+  unmounted(){
+    removeEventListener("resize",this.updateLimit)
+  },
   computed: {
     count() {
       return this._offres.length;
     },
     offres() {
-      let trueIndex = this.index * 3;
-      return this._offres.slice(trueIndex, trueIndex + 3);
+      let trueIndex = this.index * this.limit;
+      return this._offres.slice(trueIndex, trueIndex + this.limit);
+    },
+  },
+  methods: {
+    getLimit() {
+      return window.matchMedia("(max-width: 425px)").matches
+        ? 1
+        : window.matchMedia("(max-width: 870px) ").matches
+        ? 2
+        : 3;
+    },
+    updateLimit() {
+      console.log("+up");
+      this.limit = this.getLimit();
     },
   },
   data() {
@@ -362,7 +298,8 @@ export default {
       };
     });
     return {
-      limit: 3,
+      _observer:undefined,
+      limit: this.getLimit(),
       topArticles,
       categories: [
         {
@@ -523,6 +460,14 @@ export default {
     min-width: 20%;
   }
 }
+/* Laptop */
+@media (min-width: 870px) and (max-width: 1024px) {
+}
+
+/* Tablet */
+@media (min-width: 425px) and (max-width: 870px) {
+}
+
 /* Mobile */
 @media (max-width: 425px) {
   .brand {

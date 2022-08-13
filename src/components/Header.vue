@@ -16,23 +16,18 @@
           <img src="@/assets/icons/ic_search.svg" alt="Icône - Recherche" />
         </label>
         <input
-          class="
-            w-full
-            justify-center
-            pl-4
-            py-1.5
-            bg-gray-100
-            border
-            rounded-xl
-          "
+          class="w-full justify-center pl-4 py-1.5 bg-gray-100 border rounded-xl"
           name="search"
           type="text"
           placeholder="Rechercher un produit, une marque, une identité"
         />
       </div>
-      <div class="flex flex-row gap-5">
+      <div class="flex flex-row gap-1">
         <button class="button-full" @click="$router.push('/login')">
           Connexion
+        </button>
+        <button class="cart">
+          <shopping-bag-icon />
         </button>
         <button class="button-full">Aide ?</button>
       </div>
@@ -70,15 +65,7 @@
                         />
                       </label>
                       <input
-                        class="
-                          w-full
-                          justify-center
-                          pl-4
-                          py-1.5
-                          bg-gray-100
-                          border
-                          rounded-xl
-                        "
+                        class="w-full justify-center pl-4 py-1.5 bg-gray-100 border rounded-xl"
                         name="search"
                         type="text"
                         placeholder="Rechercher un produit, une marque, une identité"
@@ -105,17 +92,7 @@
     </div>
     <div class="hidden md:flex flex-row w-full border-t border-black px-5 pt-2">
       <button
-        class="
-          flex
-          gap-2
-          w-full
-          text-center
-          items-center
-          justify-center
-          text-blue-900
-          font-semibold
-          px-2
-        "
+        class="flex gap-2 w-full text-center items-center justify-center text-blue-900 font-semibold px-2"
         v-for="i in menu.length"
         :key="i"
         @click="choose(i)"
@@ -137,8 +114,13 @@
 </template>
 
 <script>
+import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/vue/solid";
 export default {
   name: "HeaderView",
+  components: {
+    ShoppingBagIcon,
+    ShoppingCartIcon,
+  },
   data() {
     return {
       showModal: false,
@@ -225,5 +207,22 @@ export default {
   to {
     transform: translateY(-150%);
   }
+}
+
+.cart {
+  background-color: transparent;
+  color: black;
+  transition: cubic-bezier(0, 0.47, 1, 0.49);
+  transition-duration: 100ms;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+.cart:hover {
+  background-color: black;
+  color: white;
+}
+.cart svg {
+  height: 25px;
 }
 </style>

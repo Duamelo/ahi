@@ -191,7 +191,11 @@
             Ceci pourrait vous intéresser
           </div>
           <div class="flex flex-col md:flex-row w-full gap-10">
-            <Article v-for="i in 4" :key="i"></Article>
+            <Article
+              v-for="(article, index) in newArticle"
+              :article="article"
+              :key="index"
+            />
           </div>
         </div>
         <div class="flex flex-col gap-5 shadow-md rounded-lg mt-8 px-14 py-4">
@@ -204,7 +208,11 @@
             Retrouvez de nouveaux produits ...
           </div>
           <div class="flex flex-col md:flex-row w-full gap-10">
-            <Article v-for="i in 4" :key="i"></Article>
+            <Article
+              v-for="(article, index) in newArticle"
+              :article="article"
+              :key="index"
+            />
           </div>
         </div>
       </div>
@@ -219,9 +227,31 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Article from "@/components/Article.vue";
 import DetailsArticle from "@/components/DetailsArticle.vue";
+import { faker } from "@faker-js/faker";
 export default {
   data() {
+    let recommendedArticle = Array.from(Array(4), () => {
+      return {
+        note: faker.datatype.number({ min: 3, max: 5 }),
+        price: faker.datatype.number({ min: 10000, max: 100000 }),
+        review: faker.datatype.number(99),
+        name: faker.commerce.productName(),
+        src: faker.image.business(),
+      };
+    });
+    let newArticle = Array.from(Array(4), () => {
+      return {
+        note: faker.datatype.number({ min: 3, max: 5 }),
+        price: faker.datatype.number({ min: 10000, max: 100000 }),
+        review: faker.datatype.number(99),
+        name: faker.commerce.productName(),
+        src: faker.image.business(),
+      };
+    });
+    console.log("hellp");
     return {
+      recommendedArticle,
+      newArticle,
       nProduct: 1,
       product: {
         name: "Sac à dos avec port USB - Noir",
@@ -230,13 +260,13 @@ export default {
         prix: "13,000 FCFA",
         prixPromo: "7,250 FCFA",
       },
-    }
+    };
   },
   components: {
     Header,
     Footer,
     Article,
-    DetailsArticle
+    DetailsArticle,
   },
   methods: {
     prev() {
@@ -246,8 +276,8 @@ export default {
     },
     next() {
       this.nProduct++;
-    }
-  }
+    },
+  },
 };
 </script>
 

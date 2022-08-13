@@ -63,8 +63,8 @@ import DashboardCard from "../../../components/Dashboard/DashboardCard.vue";
 import Pagination from "../../../components/Dashboard/Pagination.vue";
 import { TrashIcon, PencilIcon } from "@heroicons/vue/outline";
 import { computed, ref } from "vue";
-import { get } from "../../../api/product";
-// import { get,remove } from "../../../api/mock/product";
+// import { get } from "../../../api/product";
+import { get,remove } from "../../../api/mock/product";
 // import { get } from "../../../api/mock/error/product";
 import Empty from "../../../components/Dashboard/Empty.vue";
 
