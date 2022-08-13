@@ -86,8 +86,8 @@ import {
 import DashboardCard from "../DashboardCard.vue";
 import Pagination from "../Pagination.vue";
 import Empty from "../Empty.vue";
-import { remove } from "../../../api/category";
-// import { remove } from "../../../api/mock/category";
+// import { remove } from "../../../api/category";
+import { remove } from "../../../api/mock/category";
 // import { remove } from "../../../api/mock/error/category";
 const products = [
       {

@@ -63,8 +63,8 @@ import Alert from "../../../components/Dashboard/Alert.vue";
 const show = ref(false);
 const error = ref(false);
 const message = ref("");
-import { create } from "../../../api/category";
-// import { create } from "../../../api/mock/category";
+// import { create } from "../../../api/category";
+import { create } from "../../../api/mock/category";
 // import { create } from "../../../api/mock/error/category";
 const item = ref({
   name: "",

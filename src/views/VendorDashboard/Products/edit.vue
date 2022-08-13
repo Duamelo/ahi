@@ -60,8 +60,8 @@ import PathItem from "../../../components/Path/PathItem.vue";
 import PathView from "../../../components/Path/PathView.vue";
 import { ref } from "@vue/reactivity";
 import Alert from "../../../components/Dashboard/Alert.vue";
-import { get,put } from "../../../api/product";
-// import { get, put } from "../../../api/mock/product";
+// import { get,put } from "../../../api/product";
+import { get, put } from "../../../api/mock/product";
 // import { get,put } from "../../../api/mock/error/product";
 import { useRoute } from 'vue-router'
 const show = ref(false);
